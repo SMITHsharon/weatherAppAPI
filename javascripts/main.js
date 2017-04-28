@@ -22,8 +22,7 @@ $("#zipCode").on("keyup", (e) => {
      e.which = e.which || e.keyCode;
      if (e.which === 13) {
 		let thisZipCode = $("#zipCode").val();
-// console.log("thisZipCode from Enter Key :: ", thisZipCode);
-		loadWeather(thisZipCode).then((data) => {
+		loadCurrentWeather(thisZipCode).then((data) => {
 	}).catch((error) => {
 		console.log(error);
 	});
@@ -36,15 +35,53 @@ $("#zipCode").on("keyup", (e) => {
 // event handler for <submit> button
 $("#sendRequest").on("click", (e) => {
 		let thisZipCode = $("#zipCode").val();
-		loadWeather(thisZipCode).then((data) => {
-	}).catch((error) => {
-		console.log(error);
-	});
+		if (validZipCode(thisZipCode)) {
+			loadCurrentWeather(thisZipCode).then((data) => {
+			}).catch((error) => {
+				console.log(error);
+			});
+		}
+		
 });
+
+// event handler for <submit> button
+// $("#sendRequest").on("click", (e) => {
+// 		let thisZipCode = $("#zipCode").val();
+// 		loadWeather(thisZipCode).then((data) => {
+// 	}).catch((error) => {
+// 		console.log(error);
+// 	});
+// });
+
+
+// function validates <zipCode> data entered by user in input field
+const validZipCode = (userZipInput) => {
+
+	const reg = /^[0-9]+$/; // test function
+	let errorMessage = "";
+
+	if (userZipInput === ""){
+		errorMessage = "Zip Code is required!";
+	}
+	else if ((userZipInput.length)< 5 || (userZipInput.length)>5 ) {
+		errorMessage = "Zip Code should be five digits.";
+	}
+	else if (!reg.test(userZipInput)){
+		errorMessage = "Zip Code should be only numbers.";
+	}
+
+	
+	if (errorMessage === "") {
+		return true;
+	} else {
+		alert(errorMessage);
+		return false;
+	}
+};
 
 
 // Promise (ajax) call
-const loadWeather = (thisZipCode) => {
+const loadCurrentWeather = (thisZipCode) => {
 
 	return new Promise ((resolve, reject) => {
 		$.ajax(`http://api.openweathermap.org/data/2.5/weather?zip=${thisZipCode},us&units=imperial&appid=${apiKey}`)
@@ -57,3 +94,4 @@ const loadWeather = (thisZipCode) => {
 };
 
 });
+
