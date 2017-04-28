@@ -9,11 +9,40 @@ const apiKey = "";
 // results.weather is an array ... 
 // do a loop to get what you need for <conditions>
 
-const writeToDOM = (zipData) => {
+const writeCurrent = (zipData) => {
 	console.log("writing to DOM // zipData :: ", zipData);
 
+	// clear the <zip code> text input field
 	$("#zipCode").attr("placeholder", "Zip Code");
 	$("#zipCode").val("");
+
+	let weatherConditionsArray = zipData.main;
+	let windSpeedArray = zipData.wind;
+	let weatherDescriptionArray = zipData.weather;
+console.log("weatherConditionsArray", weatherConditionsArray);
+console.log("windSpeedArray", windSpeedArray);
+
+	let domString = "";
+	domString += `Current Weather Conditions:  ${zipData.name}`;
+
+	domString += `<ul>`;
+	domString += `<li>Current Conditions:  ${weatherDescriptionArray[0].main}`;
+	domString += `<li>Temperature:  ${weatherConditionsArray.temp}&#176;</li>`;
+
+	domString += `<li>Min Temp:  ${weatherConditionsArray.temp_min}&#176;</li>`;
+	domString += `<li>Max Temp:  ${weatherConditionsArray.temp_max}&#176;</li>`;
+
+	domString += `<li>Humidity:  ${weatherConditionsArray.humidity}&#37;</li>`;
+
+	domString += `<li>Air Pressure:  ${weatherConditionsArray.pressure}Pa</li>`;
+
+	domString += `<li>Wind Speed:  ${windSpeedArray.speed} miles/hour</li>`;
+	domString += `</ul>`;
+
+	domString += `<button type="submit" id="threeDay" value="submit">3-Day Forecast</button>`;
+	domString += `<button type="submit" id="sevenDay" value="submit">7-Day Forecast</button>`;
+
+	$("#currentOutput").append(domString);
 };
 
 
@@ -87,7 +116,7 @@ const loadCurrentWeather = (thisZipCode) => {
 		$.ajax(`http://api.openweathermap.org/data/2.5/weather?zip=${thisZipCode},us&units=imperial&appid=${apiKey}`)
 		.done((data) => {resolve(data);
 			console.log("in Promise / data :: ", data);
-			writeToDOM(data);
+			writeCurrent(data);
 		})
 		.fail((error) => reject(error));
 	});
