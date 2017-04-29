@@ -18,15 +18,11 @@ let day7TempForecast;
 const writeCurrent = (zipData) => {
 	console.log("writing to DOM // zipData :: ", zipData);
 
-	// clear the <zip code> text input field
-	// $("#zipCode").attr("placeholder", "Zip Code");
-	// $("#zipCode").val("");
-
 	let weatherConditionsArray = zipData.main;
 	let windSpeedArray = zipData.wind;
 	let weatherDescriptionArray = zipData.weather;
-console.log("weatherConditionsArray", weatherConditionsArray);
-console.log("windSpeedArray", windSpeedArray);
+// console.log("weatherConditionsArray", weatherConditionsArray);
+// console.log("windSpeedArray", windSpeedArray);
 
 	let domString = "";
 	domString += `Current Weather Conditions:  ${zipData.name}`;
@@ -67,13 +63,20 @@ const writeForecast = (numDaysForecast, zipData) => {
 		day7TempForecast = forecastResults[6].temp;
 	}
 
-console.log("forecastResults :: ", forecastResults);
-console.log("day1TempForecast :: ", day1TempForecast);
-console.log("forecastResults[0].humidity :: ", forecastResults[0].humidity);
+// console.log("forecastResults :: ", forecastResults);
+// console.log("day1TempForecast :: ", day1TempForecast);
+// console.log("forecastResults[0].humidity :: ", forecastResults[0].humidity);
 
 	let domString = "";
 
-	domString += `<div class="col-sm-3">${numDaysForecast}-Day Forecast`;
+	if (numDaysForecast === 3) {
+		domString += `<div class="col-sm-3">${numDaysForecast}-Day Forecast`;
+
+	} else { // 7-day forecast
+		domString += `<div class="col-sm-2"></div>`;
+		domString += `<div class="col-sm-2">${numDaysForecast}-Day Forecast`;
+	}
+	
 	domString += `<ul>`;
 	domString += `<li>Clouds:</li>`;
 	domString += `<li>Temp:</li>`;
@@ -87,7 +90,13 @@ console.log("forecastResults[0].humidity :: ", forecastResults[0].humidity);
 
 	
 	for (let i=0; i<numDaysForecast; i++) {
-		domString += `<div class="col-sm-2">`;
+
+		if (numDaysForecast === 3) {
+			domString += `<div class="col-sm-2">`;
+		} else {
+			domString += `<div class="col-sm-1">`;
+		}
+
 		domString += `</br>${forecastResults[i].clouds}&#37;</br>`;
 
 		// domString += `${forecastResults[i][temp].day}&#37;</br>`;
@@ -235,6 +244,7 @@ $("#sendRequest").on("click", (e) => {
 $("body").on("click", "#threeDay", (e) => {
 		let thisZipCode = $("#zipCode").val();
 		loadForecast(3, thisZipCode).then((data) => {
+console.log("data / 3 days :: ", data);
 	}).catch((error) => {
 		console.log(error);
 	});
@@ -242,12 +252,23 @@ $("body").on("click", "#threeDay", (e) => {
 
 
 // event handler for <7-Day Forecase> button
-$("body").on("click", "#threeDay", (e) => {
+$("body").on("click", "#sevenDay", (e) => {
 		let thisZipCode = $("#zipCode").val();
 		loadForecast(7, thisZipCode).then((data) => {
 	}).catch((error) => {
 		console.log(error);
 	});
+});
+
+
+// event handler for <clear all> button
+$("#clearAll").on("click", (e) => {
+
+	// clear the <zip code> text input field
+	$("#zipCode").attr("placeholder", "Zip Code");
+	$("#zipCode").val("");
+	$("#threeDayForecast").empty();
+	$("#sevenDayForecast").empty();
 });
 
 
@@ -283,7 +304,7 @@ const loadCurrentWeather = (thisZipCode) => {
 	return new Promise ((resolve, reject) => {
 		$.ajax(`http://api.openweathermap.org/data/2.5/weather?zip=${thisZipCode},us&units=imperial&appid=${apiKey}`)
 		.done((data) => {resolve(data);
-			console.log("in loadCurrentWeather / data :: ", data);
+// console.log("in loadCurrentWeather / data :: ", data);
 			writeCurrent(data);
 		})
 		.fail((error) => reject(error));
@@ -295,7 +316,9 @@ const loadForecast = (numDaysForecast, thisZipCode) => {
 	return new Promise ((resolve, reject) => {
 		$.ajax(`http://api.openweathermap.org/data/2.5/forecast/daily?zip=${thisZipCode},us&units=imperial&cnt=${numDaysForecast}&appid=${apiKey}`)
 		.done((data) => {resolve(data);
-			console.log("in loadForecast // numDaysForecast :: ", numDaysForecast, thisZipCode);
+			resolve(data.temp);
+console.log("in loadForecast // numDaysForecast // data :: ", numDaysForecast, thisZipCode, data);
+console.log("in loadForecast // data.list :: ", data.list);
 			writeForecast(numDaysForecast, data);
 		})
 		.fail((error) => reject(error));
