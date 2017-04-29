@@ -13,24 +13,27 @@
   <h1>NSS Weather App API</h1>
 
   <div class="row">
-    <div class="col-sm-2 zipInput">
-      <span class="label label-info">Enter zip code to see area weather:</span>
-      <input type="text" id="zipCode" size="15" placeholder="Zip Code">
-    </div>
+      <div class="col-sm-2 zipInput">
+        <span class="label label-info">Enter zip code to see area weather:</span>
+        <input type="text" id="zipCode" size="15" placeholder="Zip Code">
+      </div>
 
-    <div id="sendButtonDiv" class="col-sm-1">
-      <button type="submit" id="sendRequest" value="submit">Submit</button>
-    </div>
+      <div id="sendButtonDiv" class="col-sm-1">
+        <button type="submit" id="sendRequest" value="submit">Submit</button>
+      </div>
 
-    <div id="currentOutput" class="col-sm-4">
-    </div>
+      <div id="currentOutput" class="col-sm-3">
+      </div>
+
+      <div id="threeDayForecast" class="col-sm-6">
+      </div>
   </div> <!-- .row -->
 
-  <!-- <div class="row">
-    <div id="sendButtonDiv" class="input-group col-sm-3">
-      <button type="submit" id="sendRequest" value="submit">Submit</button>
-    </div>
-  </div> --> 
+  <div class="row">
+      <div id="sevenDayForecast" class="col-sm-12"></div>
+  </div> <!-- .row -->
+  
+  </div>  
 
 
   <script type="text/javascript" src="./lib/bower_components/jquery/dist/jquery.js"></script>
