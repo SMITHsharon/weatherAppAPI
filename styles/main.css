@@ -1,2 +1,22 @@
 body {
-  background-color: #39CCCC; }
+  background: url("./images/skyBackground.jpg"); }
+
+.zipInput .label {
+  background-color: #39CCCC;
+  color: #566D75; }
+
+.zipInput input, .zipInput .btn {
+  margin-top: 2px;
+  margin-left: 10px; }
+
+.zipInput input[placeholder] {
+  color: #DDE7EB; }
+
+.zipInput input[text] {
+  color: #566D75; }
+
+.zipInput .btn {
+  outline: none; }
+
+#currentOutput .btn {
+  margin-left: 5px; }

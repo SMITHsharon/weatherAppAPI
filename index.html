@@ -13,21 +13,29 @@
   <h1>NSS Weather App API</h1>
 
   <div class="row">
-      <div class="col-sm-2 zipInput">
-        <span class="label label-info">Enter zip code to see area weather:</span>
-        <input type="text" id="zipCode" size="15" placeholder="Zip Code">
-      </div>
+    <div class="col-sm-2 zipInput">
+      <span class="label label-info">Enter zip code to see area weather:</span>
+      <input type="text" id="zipCode" size="16" placeholder="5-Digit Zip Code">
+      <div>
+        <button type="button" id="sendRequest" class="btn btn-xs" value="submit">Submit</button>
 
-      <div id="sendButtonDiv" class="col-sm-1">
-        <button type="submit" id="sendRequest" value="submit">Submit</button>
-        <button type="submit" id="clearAll" value="submit">Clear All</button>
+        <button type="button" id="clearAll" class="btn btn-xs" value="submit">Clear All</button>
       </div>
+    </div>
 
-      <div id="currentOutput" class="col-sm-3">
-      </div>
+    <!-- <div class="row"> -->
+    <!-- <div id="sendButtonDiv" class="col-sm-1">
+      <button type="button" id="sendRequest" class="btn btn-xs" value="submit">Submit</button>
 
-      <div id="threeDayForecast" class="col-sm-6">
-      </div>
+      <button type="button" id="clearAll" class="btn btn-xs" value="submit">Clear All</button>
+    </div> -->
+    <!-- </div> -->
+
+    <div id="currentOutput" class="col-sm-3">
+    </div>
+
+    <div id="threeDayForecast" class="col-sm-6">
+    </div>
   </div> <!-- .row -->
 
   <div class="row">

@@ -2,7 +2,7 @@
 $(document).ready(function(){
 
 // DON'T PUSH API KEY UP TO GITHUB !!!!!
-const apiKey = "";
+const apiKey = "c290d13d5e088a68f33cc453d9e01551";
 
 let day1TempForecast;
 let day2TempForecast;
@@ -41,27 +41,32 @@ const writeCurrent = (zipData) => {
 	domString += `<li>Wind Speed:  ${windSpeedArray.speed} miles/hour</li>`;
 	domString += `</ul>`;
 
-	domString += `<button type="submit" id="threeDay" value="submit">3-Day Forecast</button>`;
-	domString += `<button type="submit" id="sevenDay" value="submit">7-Day Forecast</button>`;
+	domString += `<button type="button" id="threeDay" class="btn btn-xs" value="submit">3-Day Forecast</button>`;
+	domString += `<button type="button" id="sevenDay" class="btn btn-xs" value="submit">7-Day Forecast</button>`;
 
 	$("#currentOutput").append(domString);
 };
 
 
 const writeForecast = (numDaysForecast, zipData) => {
-	console.log("writing Forecast / numDaysForecast, zipData :: ", numDaysForecast, zipData);
+console.log("writing Forecast / numDaysForecast, zipData :: ", numDaysForecast, zipData);
 
-	let forecastResults = zipData.list;
-	day1TempForecast = forecastResults[0].temp;
-	day2TempForecast = forecastResults[1].temp;
-	day3TempForecast = forecastResults[2].temp;
+	// let forecastResults = zipData.list;
+	// let tempForecast = zipData.temp;
+// console.log("forecastResults :: ", forecastResults);
+// console.log("tempForecast :: ", tempForecast);
+console.log("zipData[0] :: ", zipData[0]);
+console.log("zipData[0].temp :: ", zipData[0].temp);
+	// day1TempForecast = forecastResults[0].temp;
+	// day2TempForecast = forecastResults[1].temp;
+	// day3TempForecast = forecastResults[2].temp;
 
-	if (numDaysForecast === 7) {
-		day4TempForecast = forecastResults[3].temp;
-		day5TempForecast = forecastResults[4].temp;
-		day6TempForecast = forecastResults[5].temp;
-		day7TempForecast = forecastResults[6].temp;
-	}
+	// if (numDaysForecast === 7) {
+	// 	day4TempForecast = forecastResults[3].temp;
+	// 	day5TempForecast = forecastResults[4].temp;
+	// 	day6TempForecast = forecastResults[5].temp;
+	// 	day7TempForecast = forecastResults[6].temp;
+	// }
 
 // console.log("forecastResults :: ", forecastResults);
 // console.log("day1TempForecast :: ", day1TempForecast);
@@ -97,13 +102,20 @@ const writeForecast = (numDaysForecast, zipData) => {
 			domString += `<div class="col-sm-1">`;
 		}
 
-		domString += `</br>${forecastResults[i].clouds}&#37;</br>`;
+		domString += `</br>${zipData[i].clouds}&#37;</br>`;
+
+		let tempForecast = zipData[i].temp;
+		domString += `${tempForecast.day}&#37;</br>`;
+		domString += `${tempForecast.min}&#37;</br>`;
+		domString += `${tempForecast.max}&#37;</br>`;
 
 		// domString += `${forecastResults[i][temp].day}&#37;</br>`;
 		// let todayTemp = getArray(i, "day");
-		domString += getDayTemp(i);
-		domString += getMinTemp(i);
-		domString += getMaxTemp(i);
+
+// domString += `${forecastResults[i].}&#176;</br>`;
+		// domString += getDayTemp(i);
+		// domString += getMinTemp(i);
+		// domString += getMaxTemp(i);
 		// domString += `${todayTemp}&#176;</br>`;
 // console.log("getArray(i) :: ", getArray(i));
 // console.log("getArray(i, day) :: ", getArray(i, "day"));
@@ -111,9 +123,9 @@ const writeForecast = (numDaysForecast, zipData) => {
 
 		// domString += `${getArray(i, "min")}&#176;</br>`;
 		// domString += `${getArray(i, "max")}&#176;</br>`;
-		domString += `${forecastResults[i].humidity}&#37;</br>`;
-		domString += `${forecastResults[i].pressure}Pa</br>`;
-		domString += `${forecastResults[i].speed} mi/hr</br>`;
+		domString += `${zipData[i].humidity}&#37;</br>`;
+		domString += `${zipData[i].pressure}Pa</br>`;
+		domString += `${zipData[i].speed} mi/hr</br>`;
 		domString += `</div>`;
 	}
 
@@ -315,11 +327,11 @@ const loadForecast = (numDaysForecast, thisZipCode) => {
 
 	return new Promise ((resolve, reject) => {
 		$.ajax(`http://api.openweathermap.org/data/2.5/forecast/daily?zip=${thisZipCode},us&units=imperial&cnt=${numDaysForecast}&appid=${apiKey}`)
-		.done((data) => {resolve(data);
+		.done((data) => {resolve(data.list);
 			resolve(data.temp);
-console.log("in loadForecast // numDaysForecast // data :: ", numDaysForecast, thisZipCode, data);
-console.log("in loadForecast // data.list :: ", data.list);
-			writeForecast(numDaysForecast, data);
+// console.log("in loadForecast // numDaysForecast // data :: ", numDaysForecast, thisZipCode, data);
+// console.log("in loadForecast // data.list :: ", data.list);
+			writeForecast(numDaysForecast, data.list);
 		})
 		.fail((error) => reject(error));
 	});
