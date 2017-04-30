@@ -6,7 +6,7 @@
 .zipInput {
 
 	.label { 
-		background-color: $teal;
+		background-color: $lightgrey;
 		color: $darkbluegrey;
 	}
 
@@ -15,15 +15,12 @@
 		margin-left: 10px;
 	}
 
-	input[placeholder] {
-		color: $lightgrey;
-	}
-
 	input[text] {
 		color: $darkbluegrey;
 	}
 
 	.btn {
+		margin-top: 5px;
 		outline: none;
 	}
 }
@@ -33,3 +30,11 @@
 		margin-left: 5px;
 	}
 }
+
+#sevenDayForecast {
+	
+	margin-top: 25px;
+}
+
+
+

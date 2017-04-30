@@ -1,22 +1,23 @@
 body {
-  background: url("./images/skyBackground.jpg"); }
+  background: url("./images/skyBackground.jpg") no-repeat center center fixed; }
 
 .zipInput .label {
-  background-color: #39CCCC;
+  background-color: #DDE7EB;
   color: #566D75; }
 
 .zipInput input, .zipInput .btn {
   margin-top: 2px;
   margin-left: 10px; }
 
-.zipInput input[placeholder] {
-  color: #DDE7EB; }
-
 .zipInput input[text] {
   color: #566D75; }
 
 .zipInput .btn {
+  margin-top: 5px;
   outline: none; }
 
 #currentOutput .btn {
   margin-left: 5px; }
+
+#sevenDayForecast {
+  margin-top: 25px; }
