@@ -1,6 +1,11 @@
 
 $(document).ready(function(){
 
+// how to get date output ? 
+// how to test if zipData[i].rain exists ? 
+// how to display a background image using SASS ? 
+
+
 // DON'T PUSH API KEY UP TO GITHUB !!!!!
 const apiKey = "";
 
@@ -11,30 +16,25 @@ const writeCurrent = (zipData) => {
 	$("#sevenDay").removeClass("hide");
 	$("#clearAll").removeClass("hide");
 
-
 	let weatherConditionsArray = zipData.main;
 	let windSpeedArray = zipData.wind;
 	let weatherDescriptionArray = zipData.weather;
-// console.log("zipData :: ", zipData);
-// console.log("weatherConditionsArray :: ", weatherConditionsArray);
-// console.log("weatherDescriptionArray :: ", weatherDescriptionArray);
-
 
 	let domString = "";
 	let buttonString = "";
-	domString += `${zipData.name} Weather:`;
+	domString += `<span class="currentWeatherHead">${zipData.name} Weather</span></br>`;
 
-	domString += `<ul>`;
-	domString += `<li>Current Conditions:  ${titleCase(weatherDescriptionArray[0].description)}`;
-	domString += `<li>Temperature:  ${weatherConditionsArray.temp}&#176;</li>`;
+	// domString += `<ul>`;
+	domString += `Current Conditions:  ${titleCase(weatherDescriptionArray[0].description)}</br>`;
+	domString += `Temperature:  ${weatherConditionsArray.temp}&#176;</br>`;
 
-	domString += `<li>High/Low:  ${weatherConditionsArray.temp_max}&#176;/`;
-	domString += `${weatherConditionsArray.temp_min}&#176;</li>`;
+	domString += `High/Low:  ${weatherConditionsArray.temp_max}&#176;/`;
+	domString += `${weatherConditionsArray.temp_min}&#176;</br>`;
 
-	domString += `<li>Wind Speed:  ${windSpeedArray.speed} miles/hour</li>`;
+	domString += `Wind Speed:  ${windSpeedArray.speed} miles/hour</br>`;
 
-	domString += `<li>Air Pressure:  ${weatherConditionsArray.pressure}Pa</li>`;
-	domString += `</ul>`;
+	domString += `Air Pressure:  ${weatherConditionsArray.pressure}Pa</br>`;
+	// domString += `</ul>`;
 
 	$("#currentOutput").append(domString);
 };
@@ -110,16 +110,23 @@ const getDay = (dayCounter) => {
 
 
 const titleCase = (str) => {
-	// will split the string delimited by space into an array of words
+
+	// splits the string delimited by space into an array of words
      str = str.toLowerCase().split(' ');                
 
-     // str.length holds the number of occurrences of the array...
-     for(var i = 0; i < str.length; i++) {               
-          str[i] = str[i].split('');                    // splits the array occurrence into an array of letters
-          str[i][0] = str[i][0].toUpperCase();          // converts the first occurrence of the array to uppercase
-          str[i] = str[i].join('');                     // converts the array of letters back into a word.
+     for(var i = 0; i < str.length; i++) {  
+          // splits the array occurrence into an array of letters
+          str[i] = str[i].split(''); 
+
+          // converts the first occurrence of the array to uppercase
+          str[i][0] = str[i][0].toUpperCase();
+
+          // converts the array of letters back into a word.
+          str[i] = str[i].join('');                     
      }
-     return str.join(' ');                              //  converts the array of words back to a sentence.
+
+     //  converts the array of words back to a sentence.
+     return str.join(' ');                              
 };
 
 

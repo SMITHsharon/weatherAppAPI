@@ -1,14 +1,17 @@
 
 @import "color";
-@import 'images';
+@import "fonts";
+@import "images";
 
 body {
 	background-color: $background;
+	font: 100% $font-stack;
+	color: $darkbluegrey;
 }
 
 
 h1 {
-	
+	margin-bottom: 25px;
 	text-align: center;
 }
 
@@ -18,15 +21,17 @@ h1 {
 	.label { 
 		background-color: $background;
 		color: $darkbluegrey;
+		font-size: 1.5em;
+		bont-weight: 900;
+	}
+
+	input {
+		color: $darkbluegrey;
+		font-size: 2em;
 	}
 
 	input, .btn {
-		margin-top: 2px;
 		margin-left: 10px;
-	}
-
-	input[text] {
-		color: $darkbluegrey;
 	}
 
 	.btn {
@@ -38,8 +43,19 @@ h1 {
 
 #currentOutput {
 
+	margin-top: 1%;
+
 	.btn {
 		margin-left: 5px;
+	}
+
+	margin-left: 8%;
+	font-size: 1.8em;
+
+	.currentWeatherHead {
+
+		font-size: 1.8em;
+		font-weight: 900;
 	}
 
 	li {
@@ -48,25 +64,9 @@ h1 {
 }
 
 
-#todayForecast {
-
-	li {
-		list-style-type: none;
-	}
-}
-
-
-#threeDayForecast, #sevenDayForecast {
-	
-	margin-top: 25px;
-	padding-top: 10px;
-
-}
-
 
 #forecastOutput {
-	
-	margin-top: 3%;
+	margin-top: 2%;
 	margin-left: 5%;
 	margin-right: 5%;
 }
@@ -74,11 +74,10 @@ h1 {
 
 table {
 	
-	border: 1px solid $border-divider;
+	border: 1px solid $border-color;
 
 	thead {
-		border-top: 1px solid $border-divider;
-		background-color: $lightgrey;
+		background-color: $table-header;
 	}
 }
 
