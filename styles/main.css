@@ -1,8 +1,11 @@
 body {
   background: url("./images/skyBackground.jpg") no-repeat center center fixed; }
 
+body {
+  background-color: #D3E0ED; }
+
 .zipInput .label {
-  background-color: #DDE7EB;
+  background-color: #D3E0ED;
   color: #566D75; }
 
 .zipInput input, .zipInput .btn {
@@ -19,5 +22,13 @@ body {
 #currentOutput .btn {
   margin-left: 5px; }
 
-#sevenDayForecast {
-  margin-top: 25px; }
+#currentOutput li {
+  list-style-type: none; }
+
+#todayForecast li {
+  list-style-type: none; }
+
+#threeDayForecast, #sevenDayForecast {
+  margin-top: 25px;
+  padding-top: 10px;
+  border-top: 1px solid #99B2CC; }

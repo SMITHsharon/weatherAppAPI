@@ -2,11 +2,14 @@
 @import "color";
 @import 'images';
 
+body {
+	background-color: $background;
+}
 
 .zipInput {
 
 	.label { 
-		background-color: $lightgrey;
+		background-color: $background;
 		color: $darkbluegrey;
 	}
 
@@ -25,16 +28,35 @@
 	}
 }
 
+
 #currentOutput {
+
 	.btn {
 		margin-left: 5px;
 	}
+
+	li {
+	 list-style-type: none;
+	}
 }
 
-#sevenDayForecast {
+
+#todayForecast {
+
+	li {
+		list-style-type: none;
+	}
+}
+
+
+#threeDayForecast, #sevenDayForecast {
 	
 	margin-top: 25px;
+	padding-top: 10px;
+	border-top: 1px solid $border-divider;
+
 }
+
 
 
 
