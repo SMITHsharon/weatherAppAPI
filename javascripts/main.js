@@ -22,16 +22,14 @@ const writeCurrent = (zipData) => {
 
 	let domString = "";
 	let buttonString = "";
-	domString += `Current Weather Conditions:  ${zipData.name}`;
+	domString += `${zipData.name} Weather:`;
 
 	domString += `<ul>`;
-	domString += `<li>Current Conditions:  ${weatherDescriptionArray[0].description}`;
+	domString += `<li>Current Conditions:  ${titleCase(weatherDescriptionArray[0].description)}`;
 	domString += `<li>Temperature:  ${weatherConditionsArray.temp}&#176;</li>`;
 
 	domString += `<li>High/Low:  ${weatherConditionsArray.temp_max}&#176;/`;
 	domString += `${weatherConditionsArray.temp_min}&#176;</li>`;
-
-	domString += `<li>Humidity:  ${weatherConditionsArray.humidity}&#37;</li>`;
 
 	domString += `<li>Wind Speed:  ${windSpeedArray.speed} miles/hour</li>`;
 
@@ -50,8 +48,11 @@ const writeForecast = (numDaysForecast, zipData) => {
 // console.log("zipData[0].temp :: ", zipData[0].temp);
 // console.log("zipData[0].weather[0].description :: ", zipData[0].weather[0].description);
 
-// let weatherDescriptionArray = zipData.weather;
+let weatherDescriptionArray = zipData.weather;
 // console.log("weatherDescriptionArray ::", weatherDescriptionArray);
+
+	// clear prior ouputs;
+	$("#forecastOutput").empty();
 
 	let domString = "";
 
@@ -64,8 +65,8 @@ const writeForecast = (numDaysForecast, zipData) => {
     domString += `<th>Description</th>`;
     domString += `<th>High/Low</th>`;
     domString += `<th>Precip</th>`;
-    domString += `<th>Wind</th>`;      
-    domString += `<th>Humidity</th>`;   
+    domString += `<th>Wind</th>`;
+    domString += `<th>Humidity</th>`;
     domString += `</tr>`;    
     domString += `</thead>`;   
 
@@ -76,10 +77,11 @@ const writeForecast = (numDaysForecast, zipData) => {
     	let tempForecast = zipData[i].temp;
 
 	    domString += `<tr>`;
-	    domString += `<td>Today</td>`;
-		domString += `<td>${zipData[0].weather[0].description}</td>`;
+	    domString += `<td>${getDay(i)}</td>`;
+		domString += `<td>${titleCase(zipData[i].weather[0].description)}</td>`;
 		domString += `<td>${tempForecast.max}&#176;/${tempForecast.min}&#176;</td>`;
 		domString += `<td>${zipData[i].rain}&#37;</td>`;
+		// domString += `<td>${precipStr(zipData[i].rain)}</td>`;
 	    domString += `<td>${zipData[i].speed} mi/hr</td>`;
 	    domString += `<td>${zipData[i].humidity}&#37;</td>`; 
 	    domString += `</tr>`;
@@ -91,128 +93,43 @@ const writeForecast = (numDaysForecast, zipData) => {
 
 	$("#forecastOutput").append(domString);
 
-	// if (numDaysForecast === 1) {
-	// 	domString += `<div class="col-sm-4">${numDaysForecast}-Day Forecast`;
-
-	// } else 
-	// if (numDaysForecast === 3) {
-	// 	domString += `<div class="col-sm-3 col-xs-offset-2">${numDaysForecast}-Day Forecast`;
-
-	// } else { // 7-day forecast
-	// 	domString += `<div class="col-sm-2"></div>`;
-	// 	domString += `<div class="col-sm-2">${numDaysForecast}-Day Forecast`;
-	// }
-	
-	// domString += `<ul>`;
-	// domString += `<li>You Can Expect:</li>`;
-	// domString += `<li>High/Low:</li>`;
-	// domString += `<li>Precipitation:</li>`;
-	// domString += `<li>Wind Speed:</li>`;
-	// domString += `<li>Humidity:</li>`;
-	// domString += `</ul></div>`;
-	
-	// for (let i=0; i<numDaysForecast; i++) {
-
-	// 	if (numDaysForecast === 1) {
-	// 		domString += `<div class="col-sm-3">`;
-	// 	} else 
-	// 	if (numDaysForecast === 3) {
-	// 		domString += `<div class="col-sm-2">`;
-	// 	} else {
-	// 		domString += `<div class="col-sm-1">`;
-	// 	}
-
-	// 	domString += `</br>${zipData[0].weather[0].description}</br>`;
-
-	// 	let tempForecast = zipData[i].temp;
-	// 	domString += `${tempForecast.max}&#176;/${tempForecast.min}&#176;</br>`;
-	// 	domString += `${zipData[i].rain}&#37;</br>`;
-	// 	domString += `${zipData[i].speed} mi/hr</br>`;
-	// 	domString += `${zipData[i].humidity}&#37;</br>`;
-	// 	domString += `</div>`;
-	// }
-
-	// domString += `</ul>`;
-
-	// if (numDaysForecast === 1) {
-	// 	$("#todayForecast").append(domString);
-	// } else 
-	// if (numDaysForecast === 3) {
-	// 	$("#threeDayForecast").removeClass("hide");
-	// 	$("#threeDayForecast").append(domString);
-	// } else {
-	// 	$("#sevenDayForecast").removeClass("hide");
-	// 	$("#sevenDayForecast").append(domString);
-	// }
-
 };
 
 
-const zwriteForecast = (numDaysForecast, zipData) => {
+const getDay = (dayCounter) => {
 
-// console.log("writing Forecast / numDaysForecast, zipData :: ", numDaysForecast, zipData);
-
-// console.log("zipData[0] :: ", zipData[0]);
-// console.log("zipData[0].temp :: ", zipData[0].temp);
-// console.log("zipData[0].weather[0].description :: ", zipData[0].weather[0].description);
-
-// let weatherDescriptionArray = zipData.weather;
-// console.log("weatherDescriptionArray ::", weatherDescriptionArray);
-
-	let domString = "";
-
-	if (numDaysForecast === 1) {
-		domString += `<div class="col-sm-4">${numDaysForecast}-Day Forecast`;
-
-	} else 
-	if (numDaysForecast === 3) {
-		domString += `<div class="col-sm-3 col-xs-offset-2">${numDaysForecast}-Day Forecast`;
-
-	} else { // 7-day forecast
-		domString += `<div class="col-sm-2"></div>`;
-		domString += `<div class="col-sm-2">${numDaysForecast}-Day Forecast`;
-	}
-	
-	domString += `<ul>`;
-	domString += `<li>You Can Expect:</li>`;
-	domString += `<li>High/Low:</li>`;
-	domString += `<li>Precipitation:</li>`;
-	domString += `<li>Wind Speed:</li>`;
-	domString += `<li>Humidity:</li>`;
-	domString += `</ul></div>`;
-	
-	for (let i=0; i<numDaysForecast; i++) {
-
-		if (numDaysForecast === 1) {
-			domString += `<div class="col-sm-3">`;
-		} else 
-		if (numDaysForecast === 3) {
-			domString += `<div class="col-sm-2">`;
-		} else {
-			domString += `<div class="col-sm-1">`;
-		}
-
-		domString += `</br>${zipData[0].weather[0].description}</br>`;
-
-		let tempForecast = zipData[i].temp;
-		domString += `${tempForecast.max}&#176;/${tempForecast.min}&#176;</br>`;
-		domString += `${zipData[i].rain}&#37;</br>`;
-		domString += `${zipData[i].speed} mi/hr</br>`;
-		domString += `${zipData[i].humidity}&#37;</br>`;
-		domString += `</div>`;
-	}
-
-	domString += `</ul>`;
-
-	if (numDaysForecast === 1) {
-		$("#todayForecast").append(domString);
-	} else 
-	if (numDaysForecast === 3) {
-		$("#threeDayForecast").removeClass("hide");
-		$("#threeDayForecast").append(domString);
+	if (dayCounter === 0) {
+		return "Today's Forecast";
+	} else
+	if (dayCounter === 1) {
+		return "Tomorrow's Forecast";
 	} else {
-		$("#sevenDayForecast").removeClass("hide");
-		$("#sevenDayForecast").append(domString);
+		return "Day " + dayCounter ;
+	}
+};
+
+
+const titleCase = (str) => {
+	// will split the string delimited by space into an array of words
+     str = str.toLowerCase().split(' ');                
+
+     // str.length holds the number of occurrences of the array...
+     for(var i = 0; i < str.length; i++) {               
+          str[i] = str[i].split('');                    // splits the array occurrence into an array of letters
+          str[i][0] = str[i][0].toUpperCase();          // converts the first occurrence of the array to uppercase
+          str[i] = str[i].join('');                     // converts the array of letters back into a word.
+     }
+     return str.join(' ');                              //  converts the array of words back to a sentence.
+};
+
+
+// how to catch the condition when the .rain attribute does not exist ???
+const precipStr = (apiResult) => {
+
+	if (apiResult(hasOwnProperty("rain"))) {
+		return "zipData[i].rain}&#37;" ;
+	} else {
+		return "0&#37;" ;
 	}
 };
 
@@ -259,7 +176,7 @@ $("#today").click(() => {
 // event handler for <3-Day Forecase> button
 $("#threeDay").click(() => {
 	let thisZipCode = $("#zipCode").val();
-	loadForecast(3, thisZipCode).then((data) => {
+	loadForecast(4, thisZipCode).then((data) => {
 	}).catch((error) => {
 		console.log(error);
 	});
@@ -269,7 +186,7 @@ $("#threeDay").click(() => {
 // event handler for <7-Day Forecase> button
 $("#sevenDay").click(() => {
 	let thisZipCode = $("#zipCode").val();
-	loadForecast(7, thisZipCode).then((data) => {
+	loadForecast(8, thisZipCode).then((data) => {
 	}).catch((error) => {
 		console.log(error);
 	});
@@ -279,18 +196,20 @@ $("#sevenDay").click(() => {
 // event handler for <clear all> button
 $("#clearAll").click(() => {
 
+	// reinitialize user input field
 	$("#zipCode").attr("placeholder", "Zip Code");
 	$("#zipCode").val("");
+
+	// clear output data from DOM
 	$("#currentOutput").empty();
-	$("#todayForecast").empty();
-	$("#threeDayForecast").empty();
-	$("#sevenDayForecast").empty();
+	$("#forecastOutput").empty();
+
+	// hide the buttons that appear only when a Weather request 
+	// has been made and Current Weather Conditions are displayed
 	$("#today").addClass("hide");
 	$("#threeDay").addClass("hide");
 	$("#sevenDay").addClass("hide");
 	$("#clearAll").addClass("hide");
-	$("#threeDayForecast").addClass("hide");
-	$("#sevenDayForecast").addClass("hide");
 });
 
 
@@ -337,7 +256,6 @@ const loadForecast = (numDaysForecast, thisZipCode) => {
 	return new Promise ((resolve, reject) => {
 		$.ajax(`http://api.openweathermap.org/data/2.5/forecast/daily?zip=${thisZipCode},us&units=imperial&cnt=${numDaysForecast}&appid=${apiKey}`)
 		.done((data) => {resolve(data.list);
-			resolve(data.temp);
 			writeForecast(numDaysForecast, data.list);
 		})
 		.fail((error) => reject(error));

@@ -4,6 +4,9 @@ body {
 body {
   background-color: #D3E0ED; }
 
+h1 {
+  text-align: center; }
+
 .zipInput .label {
   background-color: #D3E0ED;
   color: #566D75; }
@@ -30,5 +33,15 @@ body {
 
 #threeDayForecast, #sevenDayForecast {
   margin-top: 25px;
-  padding-top: 10px;
-  border-top: 1px solid #99B2CC; }
+  padding-top: 10px; }
+
+#forecastOutput {
+  margin-top: 3%;
+  margin-left: 5%;
+  margin-right: 5%; }
+
+table {
+  border: 1px solid #99B2CC; }
+  table thead {
+    border-top: 1px solid #99B2CC;
+    background-color: #DDE7EB; }

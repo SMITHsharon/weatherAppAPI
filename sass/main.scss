@@ -6,6 +6,13 @@ body {
 	background-color: $background;
 }
 
+
+h1 {
+	
+	text-align: center;
+}
+
+
 .zipInput {
 
 	.label { 
@@ -53,10 +60,25 @@ body {
 	
 	margin-top: 25px;
 	padding-top: 10px;
-	border-top: 1px solid $border-divider;
 
 }
 
 
+#forecastOutput {
+	
+	margin-top: 3%;
+	margin-left: 5%;
+	margin-right: 5%;
+}
 
+
+table {
+	
+	border: 1px solid $border-divider;
+
+	thead {
+		border-top: 1px solid $border-divider;
+		background-color: $lightgrey;
+	}
+}
 
