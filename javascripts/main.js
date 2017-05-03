@@ -7,7 +7,7 @@ $(document).ready(function(){
 
 
 // DON'T PUSH API KEY UP TO GITHUB !!!!!
-const apiKey = "";
+const apiKey = "63335b97514443314e85c737030fb8f9";
 
 const writeCurrent = (zipData) => {
 
@@ -80,7 +80,8 @@ let weatherDescriptionArray = zipData.weather;
 	    domString += `<td>${getDay(i)}</td>`;
 		domString += `<td>${titleCase(zipData[i].weather[0].description)}</td>`;
 		domString += `<td>${tempForecast.max}&#176;/${tempForecast.min}&#176;</td>`;
-		domString += `<td>${zipData[i].rain}&#37;</td>`;
+		domString += `<td>${getPrecip(zipData[i].rain)}</td>`;
+		// domString += `<td>${zipData[i].rain}&#37;</td>`;
 		// domString += `<td>${precipStr(zipData[i].rain)}</td>`;
 	    domString += `<td>${zipData[i].speed} mi/hr</td>`;
 	    domString += `<td>${zipData[i].humidity}&#37;</td>`; 
@@ -105,6 +106,16 @@ const getDay = (dayCounter) => {
 		return "Tomorrow's Forecast";
 	} else {
 		return "Day " + dayCounter ;
+	}
+};
+
+
+const getPrecip = (rainForecast) => {
+
+	if (typeof rainForecast !== "undefined") {
+		return rainForecast + "&#37";
+	} else {
+		return "0%";
 	}
 };
 
