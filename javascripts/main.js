@@ -7,7 +7,7 @@ $(document).ready(function(){
 
 
 // DON'T PUSH API KEY UP TO GITHUB !!!!!
-const apiKey = "63335b97514443314e85c737030fb8f9";
+const apiKey = "";
 
 const writeCurrent = (zipData) => {
 
@@ -16,7 +16,6 @@ const writeCurrent = (zipData) => {
 	$("#sevenDay").removeClass("hide");
 	$("#clearAll").removeClass("hide");
 
-	let weatherConditionsArray = zipData.main;
 	let windSpeedArray = zipData.wind;
 	let weatherDescriptionArray = zipData.weather;
 
@@ -77,12 +76,10 @@ let weatherDescriptionArray = zipData.weather;
     	let tempForecast = zipData[i].temp;
 
 	    domString += `<tr>`;
-	    domString += `<td>${getDay(i)}</td>`;
+	    domString += `<td>${showDay(i)}</td>`;
 		domString += `<td>${titleCase(zipData[i].weather[0].description)}</td>`;
 		domString += `<td>${tempForecast.max}&#176;/${tempForecast.min}&#176;</td>`;
 		domString += `<td>${getPrecip(zipData[i].rain)}</td>`;
-		// domString += `<td>${zipData[i].rain}&#37;</td>`;
-		// domString += `<td>${precipStr(zipData[i].rain)}</td>`;
 	    domString += `<td>${zipData[i].speed} mi/hr</td>`;
 	    domString += `<td>${zipData[i].humidity}&#37;</td>`; 
 	    domString += `</tr>`;
@@ -97,7 +94,19 @@ let weatherDescriptionArray = zipData.weather;
 };
 
 
-const getDay = (dayCounter) => {
+const showDay = (dayCounter) => {
+
+	let today, showDay, someday;
+	today = new Date();
+	// someday = new Date();
+	// someday.setDate(someday.getDate() + 1);
+	
+
+
+console.log("today :: ", today);
+// console.log("getDay() :: ", getDay());
+console.log("someday :: ", someday);
+
 
 	if (dayCounter === 0) {
 		return "Today's Forecast";
