@@ -55,7 +55,7 @@ Use the [OpenWeatherMap](http://openweathermap.org/API) API to build an applicat
 #### Additional Implementation Notes
 - Displays the forecast output in a table
 - Tests the returned Precipitation forecast property, to determine that it exists
-- Generates Date objects and formatts Date output for the table rows for the forecast output
+- Generates Date objects and formats Date output for the table rows for the forecast output
 - Completed code does not have any Grunt errors.
 
 
