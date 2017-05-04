@@ -1,11 +1,6 @@
 
 $(document).ready(function(){
 
-// how to get date output ? 
-// how to test if zipData[i].rain exists ? 
-// how to display a background image using SASS ? 
-
-
 // DON'T PUSH API KEY UP TO GITHUB !!!!!
 const apiKey = "";
 
@@ -18,12 +13,12 @@ const writeCurrent = (zipData) => {
 
 	let windSpeedArray = zipData.wind;
 	let weatherDescriptionArray = zipData.weather;
+	let weatherConditionsArray = zipData.main;
 
 	let domString = "";
 	let buttonString = "";
 	domString += `<span class="currentWeatherHead">${zipData.name} Weather</span></br>`;
 
-	// domString += `<ul>`;
 	domString += `Current Conditions:  ${titleCase(weatherDescriptionArray[0].description)}</br>`;
 	domString += `Temperature:  ${weatherConditionsArray.temp}&#176;</br>`;
 
@@ -33,7 +28,6 @@ const writeCurrent = (zipData) => {
 	domString += `Wind Speed:  ${windSpeedArray.speed} miles/hour</br>`;
 
 	domString += `Air Pressure:  ${weatherConditionsArray.pressure}Pa</br>`;
-	// domString += `</ul>`;
 
 	$("#currentOutput").append(domString);
 };
@@ -41,14 +35,7 @@ const writeCurrent = (zipData) => {
 
 const writeForecast = (numDaysForecast, zipData) => {
 
-// console.log("writing Forecast / numDaysForecast, zipData :: ", numDaysForecast, zipData);
-
-// console.log("zipData[0] :: ", zipData[0]);
-// console.log("zipData[0].temp :: ", zipData[0].temp);
-// console.log("zipData[0].weather[0].description :: ", zipData[0].weather[0].description);
-
 let weatherDescriptionArray = zipData.weather;
-// console.log("weatherDescriptionArray ::", weatherDescriptionArray);
 
 	// clear prior ouputs;
 	$("#forecastOutput").empty();
@@ -76,7 +63,7 @@ let weatherDescriptionArray = zipData.weather;
     	let tempForecast = zipData[i].temp;
 
 	    domString += `<tr>`;
-	    domString += `<td>${showDay(i)}</td>`;
+	    domString += `<td>${showDay(new Date(), i)}</td>`;
 		domString += `<td>${titleCase(zipData[i].weather[0].description)}</td>`;
 		domString += `<td>${tempForecast.max}&#176;/${tempForecast.min}&#176;</td>`;
 		domString += `<td>${getPrecip(zipData[i].rain)}</td>`;
@@ -94,31 +81,41 @@ let weatherDescriptionArray = zipData.weather;
 };
 
 
-const showDay = (dayCounter) => {
+// function matches the loop counter <dayCounter> with forecast day 
+// RETURNS a string in the form, "May 5" for the forecast output table, 
+// for the respective table row output
+// 
+// The first row in the table shows the current day's forecast 
+// and is prefixed with "Tonight"
+// The second row in the table is prefixed with "Tomorrow"
+const showDay = (someday, dayCounter) => {
 
-	let today, showDay, someday;
-	today = new Date();
-	// someday = new Date();
-	// someday.setDate(someday.getDate() + 1);
-	
+	let monthNames = [
+	"Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"
+	];
 
+	someday.setDate(someday.getDate() + dayCounter);
+  	let day = someday.getDate();
+  	let monthIndex = someday.getMonth();
 
-console.log("today :: ", today);
-// console.log("getDay() :: ", getDay());
-console.log("someday :: ", someday);
-
-
+  	if (dayCounter > 1) {
+		return (monthNames[monthIndex] + ' ' + day);
+	} else 
 	if (dayCounter === 0) {
-		return "Today's Forecast";
-	} else
+		// today's forecast
+		return ("Today's Forecast");
+		// return ('Tonight, ' + monthNames[monthIndex] + ' ' + day);
+	} else 
 	if (dayCounter === 1) {
-		return "Tomorrow's Forecast";
-	} else {
-		return "Day " + dayCounter ;
+		// today's forecast
+		return ('Tomorrow, ' + monthNames[monthIndex] + ' ' + day);
 	}
 };
 
 
+// function checks to see if <zipData[i].rain> property exists
+// IF EXISTS, RETURNS the value
+// IF UNDEFINED, RETURNS the string "0%" to display for precipitation forecast
 const getPrecip = (rainForecast) => {
 
 	if (typeof rainForecast !== "undefined") {
@@ -129,6 +126,8 @@ const getPrecip = (rainForecast) => {
 };
 
 
+// function converts first char in each word of a string to uppercase
+// RETURNS the converted string
 const titleCase = (str) => {
 
 	// splits the string delimited by space into an array of words
@@ -147,17 +146,6 @@ const titleCase = (str) => {
 
      //  converts the array of words back to a sentence.
      return str.join(' ');                              
-};
-
-
-// how to catch the condition when the .rain attribute does not exist ???
-const precipStr = (apiResult) => {
-
-	if (apiResult(hasOwnProperty("rain"))) {
-		return "zipData[i].rain}&#37;" ;
-	} else {
-		return "0&#37;" ;
-	}
 };
 
 
@@ -180,6 +168,7 @@ $("#zipCode").on("keyup", (e) => {
      }
 });
 
+
 // event handler for <submit> button
 $("#sendRequest").click(() => {
 	let thisZipCode = $("#zipCode").val();
@@ -191,6 +180,7 @@ $("#sendRequest").click(() => {
 	}
 });
 
+
 // event handler for <1-Day Forecase> button
 $("#today").click(() => {
 	let thisZipCode = $("#zipCode").val();
@@ -199,6 +189,7 @@ $("#today").click(() => {
 		console.log(error);
 	});
 });
+
 
 // event handler for <3-Day Forecase> button
 $("#threeDay").click(() => {
