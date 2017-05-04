@@ -14,7 +14,7 @@ This exercise sends an API request to [OpenWeatherMap](http://openweathermap.org
 ![Weather App | One-Day Forecast](https://raw.githubusercontent.com/SMITHsharon/weatherAppAPI/screens/screens/Weather%20App%20%7C%20One-Day%20Forecast.png)
 
 #### Weather App | Seven-Day Forecast
-![Weather App | Seven-Day Forecast](https://raw.githubusercontent.com/SMITHsharon/weatherAppAPI/screens/screens/Weather%20App%20%7C%20Seven-Day%20Forecast.png)
+![Weather App | Seven-Day Forecast](https://raw.githubusercontent.com/SMITHsharon/weatherAppAPI/weather/screens/Weather%20App%20%7C%20Seven-Day%20Forecast.png)
 
 
 ### Project Specs
