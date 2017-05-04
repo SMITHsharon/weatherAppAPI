@@ -2,7 +2,23 @@
 $(document).ready(function(){
 
 // DON'T PUSH API KEY UP TO GITHUB !!!!!
-const apiKey = "";
+// weather app API Key
+const apiKey = "92a34a97c753c5d716d9034f70f8d3f4";
+
+let apiKeys; // firebase credentials
+
+FbAPI.firebaseCredentials().then((keys) => {
+	apiKeys = keys;
+	// gets the apiKeys.json object
+	// hat has the firebase API key et al
+	firebase.initializeApp(apiKeys);
+	// FbAPI.writeCurrent(apiKeys);
+
+}).catch((error) => {
+	console.log("key errors", error);
+});
+
+
 
 const writeCurrent = (zipData) => {
 
@@ -10,6 +26,7 @@ const writeCurrent = (zipData) => {
 	$("#threeDay").removeClass("hide");
 	$("#sevenDay").removeClass("hide");
 	$("#clearAll").removeClass("hide");
+	$("#viewSaved").removeClass("hide");
 
 	let windSpeedArray = zipData.wind;
 	let weatherDescriptionArray = zipData.weather;
@@ -228,6 +245,7 @@ $("#clearAll").click(() => {
 	$("#threeDay").addClass("hide");
 	$("#sevenDay").addClass("hide");
 	$("#clearAll").addClass("hide");
+	// $("#viewSaved").addClass("hide");
 });
 
 
@@ -263,6 +281,7 @@ const loadCurrentWeather = (thisZipCode) => {
 	return new Promise ((resolve, reject) => {
 		$.ajax(`http://api.openweathermap.org/data/2.5/weather?zip=${thisZipCode},us&units=imperial&appid=${apiKey}`)
 		.done((data) => {resolve(data);
+console.log("loadCurrentWeather // data :: ", data);
 			writeCurrent(data);
 		})
 		.fail((error) => reject(error));
