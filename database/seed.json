@@ -1,0 +1,28 @@
+{
+  "forecasts" : {
+    "forecast0" : {
+      "Day" : "May 6",
+      "Description" : "Light Rain",
+      "HighLow" : "64.96/46.71",
+      "Precip" : "1.66%",
+      "Wind" : "4.51 mi/hr",
+      "Humidity" : "54%"
+    },
+    "forecast1" : {
+      "Day" : "May 7",
+      "Description" : "Light Rain",
+      "HighLow" : "61.97/42.82",
+      "Precip" : "0%",
+      "Wind" : "4.3 mi/hr",
+      "Humidity" : "0%"
+    },
+    "forecast2" : {
+      "Day" : "May 8",
+      "Description" : "Sky Is Clear",
+      "HighLow" : "62.38/40.57",
+      "Precip" : "0%",
+      "Wind" : "2.4 mi/hr",
+      "Humidity" : "0%"
+    }
+  }
+}
