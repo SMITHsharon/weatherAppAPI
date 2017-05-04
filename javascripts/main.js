@@ -3,7 +3,7 @@ $(document).ready(function(){
 
 // DON'T PUSH API KEY UP TO GITHUB !!!!!
 // weather app API Key
-const apiKey = "92a34a97c753c5d716d9034f70f8d3f4";
+const apiKey = "";
 
 let apiKeys; // firebase credentials
 
