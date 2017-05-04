@@ -10,6 +10,27 @@ body {
 }
 
 
+.navbar {
+
+	li {
+		font-size: 1.5em;
+	}
+
+	.navbar-brand {
+		color: $brandColor;
+	}
+
+	#today, #threeDay, #sevenDay, #clearAll {
+		color: $background;
+	}
+
+	#viewSaved {
+		color: $viewSavedColor;
+	}
+}
+
+
+
 h1 {
 	margin-bottom: 25px;
 	text-align: center;

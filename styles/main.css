@@ -6,6 +6,18 @@ body {
   font: 100% "Catamaran", sans-serif;
   color: #566D75; }
 
+.navbar li {
+  font-size: 1.5em; }
+
+.navbar .navbar-brand {
+  color: #4A8CFF; }
+
+.navbar #today, .navbar #threeDay, .navbar #sevenDay, .navbar #clearAll {
+  color: #D3E0ED; }
+
+.navbar #viewSaved {
+  color: #02ED49; }
+
 h1 {
   margin-bottom: 25px;
   text-align: center; }
