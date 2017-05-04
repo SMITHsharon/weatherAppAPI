@@ -12,8 +12,9 @@ FbAPI.firebaseCredentials().then((keys) => {
 	// gets the apiKeys.json object
 	// hat has the firebase API key et al
 	firebase.initializeApp(apiKeys);
-	// FbAPI.writeCurrent(apiKeys);
 
+	// FbAPI.writeCurrent(apiKeys);
+console.log("firebase initialized");
 }).catch((error) => {
 	console.log("key errors", error);
 });
@@ -187,7 +188,7 @@ $("#zipCode").on("keyup", (e) => {
 
 
 // event handler for <submit> button
-$("#sendRequest").click(() => {
+$("#sendZip").click(() => {
 	let thisZipCode = $("#zipCode").val();
 	if (validZipCode(thisZipCode)) {
 		loadCurrentWeather(thisZipCode).then((data) => {
@@ -300,7 +301,35 @@ const loadForecast = (numDaysForecast, thisZipCode) => {
 };
 
 
+// login event handlers and functions
+$('#registerButton').click(() => {
+	let email = $('#inputEmail').val();
+	let password = $('#inputPassword').val();
 
+	// ES6 notation when key & value are the same
+	// otherwise, have to break out the 
+	// key: value pairs
+	let user = {email, password}; 
+	FbAPI.registerUser(user).then((response) => {
+		console.log("register response", response);
+		let newUser = {
+			uid: response.uid,
+		};
+	}).catch((error) => {
+		console.log("error in registerUser", error);
+	});
+});
+
+
+
+	// $("#zipCode").removeClass("hide");
+	// $("#sendZip").removeClass("hide");
+
+	// $("#today").removeClass("hide");
+	// $("#threeDay").removeClass("hide");
+	// $("#sevenDay").removeClass("hide");
+	// $("#clearAll").removeClass("hide");
+	// $("#viewSaved").removeClass("hide");
 
 
 });
