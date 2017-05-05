@@ -1,10 +1,10 @@
 
 @import "color";
 @import "fonts";
-@import "images";
 
 body {
-	background-color: $background;
+	background-size: cover;
+	background-image: url("/images/skyBackground.jpg");
 	font: 100% $font-stack;
 	color: $darkbluegrey;
 }

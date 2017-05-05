@@ -14,7 +14,7 @@ FbAPI.firebaseCredentials().then((keys) => {
 	firebase.initializeApp(apiKeys);
 
 	// FbAPI.writeCurrent(apiKeys);
-console.log("firebase initialized");
+// console.log("firebase initialized");
 }).catch((error) => {
 	console.log("key errors", error);
 });
@@ -303,6 +303,7 @@ const loadForecast = (numDaysForecast, thisZipCode) => {
 
 // login event handlers and functions
 $('#registerButton').click(() => {
+
 	let email = $('#inputEmail').val();
 	let password = $('#inputPassword').val();
 
@@ -313,8 +314,19 @@ $('#registerButton').click(() => {
 	FbAPI.registerUser(user).then((response) => {
 		console.log("register response", response);
 		let newUser = {
-			uid: response.uid,
+			uid: response.uid
 		};
+
+		FbAPI.addUser(apiKeys, newUser).then((response) => {
+			clearLogin();
+			$('login-container').addClass('hide');
+			// $('main-container').removeClass('hide');
+
+			showNavbar();
+
+		}).catch((error) => {
+			console.log("error in addUser", error);
+		});
 	}).catch((error) => {
 		console.log("error in registerUser", error);
 	});
@@ -322,14 +334,47 @@ $('#registerButton').click(() => {
 
 
 
-	// $("#zipCode").removeClass("hide");
-	// $("#sendZip").removeClass("hide");
+$('#loginButton').click(() => {
 
-	// $("#today").removeClass("hide");
-	// $("#threeDay").removeClass("hide");
-	// $("#sevenDay").removeClass("hide");
-	// $("#clearAll").removeClass("hide");
-	// $("#viewSaved").removeClass("hide");
+	let email = $('#inputEmail').val();
+	let password = $('inputPassword').val();
+
+	let user = {email, password};
+
+	FbAPI.loginUser(user).then((response) => {
+		clearLogin();
+		$('login-container').addClass('hide');
+		// $('main-container').removeClass('hide');
+		FbAPI.createLogoutButton(apiKeys);
+		showNavbar();
+
+	}).catch((error) => {
+		console.log("error in loginUser", error);
+	});
+});
+
+
+// function clears the login user input fields
+let clearLogin = () => {
+	$('#inputEmail').val("");
+	$('#inputPassword').val("");
+};
+
+
+// function displays the navbar items 
+// once user has logged in
+let showNavbar = () => {
+
+	$("#zipCode").removeClass("hide");
+	$("#sendZip").removeClass("hide");
+
+	$("#today").removeClass("hide");
+	$("#threeDay").removeClass("hide");
+	$("#sevenDay").removeClass("hide");
+	$("#clearAll").removeClass("hide");
+	$("#viewSaved").removeClass("hide");
+};
+
 
 
 });

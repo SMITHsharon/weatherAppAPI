@@ -2,14 +2,35 @@
 var FbAPI = ((oldFbAPI) => {
 
 	oldFbAPI.registerUser = (credentials) => {
-console.log("credentials.email", credentials.email);
+
+console.log("in registerUser // credentials.email", credentials.email);
+
 		return new Promise ((resolve, reject) => {
 			firebase.auth().createUserWithEmailAndPassword(credentials.email, credentials.password).then((authData) => {
 					resolve(authData);
+					
+console.log("in registerUser // authData", authData);
 			}).catch((error) => {
 				reject(error);
 			});
 		});
+	};
+
+
+	oldFbAPI.loginUser = (credentials) => {
+
+		return new Promise ((resolve, reject) => {
+			firebase.auth().signInWithEmailAndPassword(credentials.email, credentials.password).then((authData) => {
+					resolve(authData);
+			}).catch((error) => {
+					eject(error);
+			});
+		});
+	};
+
+
+	oldFbAPI.credentialsCurrentUser = () => {
+		return firebase.auth().currentUser;
 	};
 
 	return oldFbAPI;

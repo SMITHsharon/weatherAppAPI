@@ -1,8 +1,6 @@
 body {
-  background: url("./images/skyBackground.jpg") no-repeat center center fixed; }
-
-body {
-  background-color: #D3E0ED;
+  background-size: cover;
+  background-image: url("/images/skyBackground.jpg");
   font: 100% "Catamaran", sans-serif;
   color: #566D75; }
 

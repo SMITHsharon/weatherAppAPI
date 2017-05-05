@@ -24,5 +24,13 @@
       "Wind" : "2.4 mi/hr",
       "Humidity" : "0%"
     }
+  },
+  "users": {
+    "user0": {
+      "uid": "HRBFxvYbAfeO8x2jzRglAQyxpn72"
+    },
+    "user1": {
+      "uid": "EdiVzfJOQbR0IWcypuhlc4rR5n82"
+    }
   }
 }
