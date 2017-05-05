@@ -7,9 +7,10 @@ var FbAPI = ((oldFbAPI) => {
 
 		let userid = FbAPI.credentialsCurrentUser().uid;
 
-		FbAPI.getUser(apikey, userid).then((user) => {
+		FbAPI.getUser(apiKey, userid).then((user) => {
 			let logoutButton = `<button class="btn btn-danger" id="logoutButton">Logout}</button>`;
 			$('#logout-container').html(logoutButton);
+console.log("writing button to navbar");
 		});
 	};
 

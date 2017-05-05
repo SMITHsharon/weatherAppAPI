@@ -337,7 +337,7 @@ $('#registerButton').click(() => {
 $('#loginButton').click(() => {
 
 	let email = $('#inputEmail').val();
-	let password = $('inputPassword').val();
+	let password = $('#inputPassword').val();
 
 	let user = {email, password};
 

@@ -23,7 +23,7 @@ console.log("in registerUser // authData", authData);
 			firebase.auth().signInWithEmailAndPassword(credentials.email, credentials.password).then((authData) => {
 					resolve(authData);
 			}).catch((error) => {
-					eject(error);
+					reject(error);
 			});
 		});
 	};
