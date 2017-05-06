@@ -375,7 +375,10 @@ let showNavbar = () => {
 	$("#sevenDay").removeClass("hide");
 	$("#clearAll").removeClass("hide");
 
+	$("#social-media-icons").removeClass("hide");
+
 	$("#viewSaved").removeClass("hide");
+	$("#logout-button-container").removeClass("hide");
 };
 
 
@@ -390,6 +393,8 @@ let hideNavbar = () => {
 	$("#threeDay").addClass("hide");
 	$("#sevenDay").addClass("hide");
 	$("#clearAll").addClass("hide");
+
+	$("#social-media-icons").addClass("hide");
 
 	$("#viewSaved").addClass("hide");
 	$("#logout-button-container").addClass("hide");

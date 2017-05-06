@@ -5,6 +5,11 @@ body {
   color: #566D75;
   max-width: 100%; }
 
+#social-media-icons {
+  margin-left: 20px; }
+  #social-media-icons img {
+    padding-left: 10px; }
+
 .navbar li {
   font-size: 1.5em; }
 
