@@ -3,7 +3,7 @@ $(document).ready(function(){
 
 // DON'T PUSH API KEY UP TO GITHUB !!!!!
 // weather app API Key
-const apiKey = "";
+const apiKey = "59cd3ffa7fc015abbe108e71d108dc8d";
 
 let apiKeys; // firebase credentials
 
@@ -21,34 +21,28 @@ FbAPI.firebaseCredentials().then((keys) => {
 
 
 
-const writeCurrent = (zipData) => {
+// const writeCurrent = (zipData) => {
 
-	// $("#today").removeClass("hide");
-	// $("#threeDay").removeClass("hide");
-	// $("#sevenDay").removeClass("hide");
-	// $("#clearAll").removeClass("hide");
-	// $("#viewSaved").removeClass("hide");
+// 	let windSpeedArray = zipData.wind;
+// 	let weatherDescriptionArray = zipData.weather;
+// 	let weatherConditionsArray = zipData.main;
 
-	let windSpeedArray = zipData.wind;
-	let weatherDescriptionArray = zipData.weather;
-	let weatherConditionsArray = zipData.main;
+// 	let domString = "";
+// 	let buttonString = "";
+// 	domString += `<span class="currentWeatherHead">${zipData.name} Weather</span></br>`;
 
-	let domString = "";
-	let buttonString = "";
-	domString += `<span class="currentWeatherHead">${zipData.name} Weather</span></br>`;
+// 	domString += `Current Conditions:  ${titleCase(weatherDescriptionArray[0].description)}</br>`;
+// 	domString += `Temperature:  ${weatherConditionsArray.temp}&#176;</br>`;
 
-	domString += `Current Conditions:  ${titleCase(weatherDescriptionArray[0].description)}</br>`;
-	domString += `Temperature:  ${weatherConditionsArray.temp}&#176;</br>`;
+// 	domString += `High/Low:  ${weatherConditionsArray.temp_max}&#176;/`;
+// 	domString += `${weatherConditionsArray.temp_min}&#176;</br>`;
 
-	domString += `High/Low:  ${weatherConditionsArray.temp_max}&#176;/`;
-	domString += `${weatherConditionsArray.temp_min}&#176;</br>`;
+// 	domString += `Wind Speed:  ${windSpeedArray.speed} miles/hour</br>`;
 
-	domString += `Wind Speed:  ${windSpeedArray.speed} miles/hour</br>`;
+// 	domString += `Air Pressure:  ${weatherConditionsArray.pressure}Pa</br>`;
 
-	domString += `Air Pressure:  ${weatherConditionsArray.pressure}Pa</br>`;
-
-	$("#currentOutput").append(domString);
-};
+// 	$("#currentOutput").append(domString);
+// };
 
 
 const writeForecast = (numDaysForecast, zipData) => {
@@ -82,7 +76,7 @@ let weatherDescriptionArray = zipData.weather;
 
 	    domString += `<tr>`;
 	    domString += `<td>${showDay(new Date(), i)}</td>`;
-		domString += `<td>${titleCase(zipData[i].weather[0].description)}</td>`;
+		domString += `<td>${FbAPI.titleCase(zipData[i].weather[0].description)}</td>`;
 		domString += `<td>${tempForecast.max}&#176;/${tempForecast.min}&#176;</td>`;
 		domString += `<td>${getPrecip(zipData[i].rain)}</td>`;
 	    domString += `<td>${zipData[i].speed} mi/hr</td>`;
@@ -146,25 +140,25 @@ const getPrecip = (rainForecast) => {
 
 // function converts first char in each word of a string to uppercase
 // RETURNS the converted string
-const titleCase = (str) => {
+// const titleCase = (str) => {
 
-	// splits the string delimited by space into an array of words
-     str = str.toLowerCase().split(' ');                
+// 	// splits the string delimited by space into an array of words
+//      str = str.toLowerCase().split(' ');                
 
-     for(var i = 0; i < str.length; i++) {  
-          // splits the array occurrence into an array of letters
-          str[i] = str[i].split(''); 
+//      for(var i = 0; i < str.length; i++) {  
+//           // splits the array occurrence into an array of letters
+//           str[i] = str[i].split(''); 
 
-          // converts the first occurrence of the array to uppercase
-          str[i][0] = str[i][0].toUpperCase();
+//           // converts the first occurrence of the array to uppercase
+//           str[i][0] = str[i][0].toUpperCase();
 
-          // converts the array of letters back into a word.
-          str[i] = str[i].join('');                     
-     }
+//           // converts the array of letters back into a word.
+//           str[i] = str[i].join('');                     
+//      }
 
-     //  converts the array of words back to a sentence.
-     return str.join(' ');                              
-};
+//      //  converts the array of words back to a sentence.
+//      return str.join(' ');                              
+// };
 
 
 
@@ -283,7 +277,7 @@ const loadCurrentWeather = (thisZipCode) => {
 		$.ajax(`http://api.openweathermap.org/data/2.5/weather?zip=${thisZipCode},us&units=imperial&appid=${apiKey}`)
 		.done((data) => {resolve(data);
 console.log("loadCurrentWeather // data :: ", data);
-			writeCurrent(data);
+			FbAPI.writeCurrent(data);
 		})
 		.fail((error) => reject(error));
 	});
