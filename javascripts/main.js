@@ -3,7 +3,7 @@ $(document).ready(function(){
 
 // DON'T PUSH API KEY UP TO GITHUB !!!!!
 // weather app API Key
-const apiKey = "59cd3ffa7fc015abbe108e71d108dc8d";
+const apiKey = "";
 
 let apiKeys; // firebase credentials
 
@@ -14,9 +14,8 @@ FbAPI.firebaseCredentials().then((keys) => {
 	firebase.initializeApp(apiKeys);
 
 	// FbAPI.writeCurrent(apiKeys);
-// console.log("firebase initialized");
-}).catch((error) => {
-	console.log("key errors", error);
+	}).catch((error) => {
+		console.log("key errors", error);
 });
 
 
@@ -45,52 +44,52 @@ FbAPI.firebaseCredentials().then((keys) => {
 // };
 
 
-const writeForecast = (numDaysForecast, zipData) => {
+// const writeForecast = (numDaysForecast, zipData) => {
 
-let weatherDescriptionArray = zipData.weather;
+// let weatherDescriptionArray = zipData.weather;
 
-	// clear prior ouputs;
-	$("#forecastOutput").empty();
+// 	// clear prior ouputs;
+// 	$("#forecastOutput").empty();
 
-	let domString = "";
+// 	let domString = "";
 
-	// write table header for Forecast
-	domString += `<div class="table-responsive">`;
-	domString += `<table class="table">`;
-	domString += `<thead>`;
-	domString += `<tr>`;
-	domString += `<th>Day</th>`;
-    domString += `<th>Description</th>`;
-    domString += `<th>High/Low</th>`;
-    domString += `<th>Precip</th>`;
-    domString += `<th>Wind</th>`;
-    domString += `<th>Humidity</th>`;
-    domString += `</tr>`;    
-    domString += `</thead>`;   
+// 	// write table header for Forecast
+// 	domString += `<div class="table-responsive">`;
+// 	domString += `<table class="table">`;
+// 	domString += `<thead>`;
+// 	domString += `<tr>`;
+// 	domString += `<th>Day</th>`;
+//     domString += `<th>Description</th>`;
+//     domString += `<th>High/Low</th>`;
+//     domString += `<th>Precip</th>`;
+//     domString += `<th>Wind</th>`;
+//     domString += `<th>Humidity</th>`;
+//     domString += `</tr>`;    
+//     domString += `</thead>`;   
 
     // write the data output to the table
-    domString += `<tbody>`;
-    for (let i=0; i<numDaysForecast; i++) {
+//     domString += `<tbody>`;
+//     for (let i=0; i<numDaysForecast; i++) {
 
-    	let tempForecast = zipData[i].temp;
+//     	let tempForecast = zipData[i].temp;
 
-	    domString += `<tr>`;
-	    domString += `<td>${showDay(new Date(), i)}</td>`;
-		domString += `<td>${FbAPI.titleCase(zipData[i].weather[0].description)}</td>`;
-		domString += `<td>${tempForecast.max}&#176;/${tempForecast.min}&#176;</td>`;
-		domString += `<td>${getPrecip(zipData[i].rain)}</td>`;
-	    domString += `<td>${zipData[i].speed} mi/hr</td>`;
-	    domString += `<td>${zipData[i].humidity}&#37;</td>`; 
-	    domString += `</tr>`;
-	}
+// 	    domString += `<tr>`;
+// 	    domString += `<td>${showDay(new Date(), i)}</td>`;
+// 		domString += `<td>${FbAPI.titleCase(zipData[i].weather[0].description)}</td>`;
+// 		domString += `<td>${tempForecast.max}&#176;/${tempForecast.min}&#176;</td>`;
+// 		domString += `<td>${getPrecip(zipData[i].rain)}</td>`;
+// 	    domString += `<td>${zipData[i].speed} mi/hr</td>`;
+// 	    domString += `<td>${zipData[i].humidity}&#37;</td>`; 
+// 	    domString += `</tr>`;
+// 	}
 
-	domString += `</tbody>`;
-	domString += `</table>`;
-	domString += `</div>`;
+// 	domString += `</tbody>`;
+// 	domString += `</table>`;
+// 	domString += `</div>`;
 
-	$("#forecastOutput").append(domString);
+// 	$("#forecastOutput").append(domString);
 
-};
+// };
 
 
 // function matches the loop counter <dayCounter> with forecast day 
@@ -100,42 +99,42 @@ let weatherDescriptionArray = zipData.weather;
 // The first row in the table shows the current day's forecast 
 // and is prefixed with "Tonight"
 // The second row in the table is prefixed with "Tomorrow"
-const showDay = (someday, dayCounter) => {
+// const showDay = (someday, dayCounter) => {
 
-	let monthNames = [
-	"Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"
-	];
+	// let monthNames = [
+	// "Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"
+	// ];
 
-	someday.setDate(someday.getDate() + dayCounter);
-  	let day = someday.getDate();
-  	let monthIndex = someday.getMonth();
+	// someday.setDate(someday.getDate() + dayCounter);
+ //  	let day = someday.getDate();
+ //  	let monthIndex = someday.getMonth();
 
-  	if (dayCounter > 1) {
-		return (monthNames[monthIndex] + ' ' + day);
-	} else 
-	if (dayCounter === 0) {
-		// today's forecast
-		return ("Today's Forecast");
-		// return ('Tonight, ' + monthNames[monthIndex] + ' ' + day);
-	} else 
-	if (dayCounter === 1) {
-		// today's forecast
-		return ('Tomorrow, ' + monthNames[monthIndex] + ' ' + day);
-	}
-};
+ //  	if (dayCounter > 1) {
+	// 	return (monthNames[monthIndex] + ' ' + day);
+	// } else 
+	// if (dayCounter === 0) {
+	// 	// today's forecast
+	// 	return ("Today's Forecast");
+	// 	// return ('Tonight, ' + monthNames[monthIndex] + ' ' + day);
+	// } else 
+	// if (dayCounter === 1) {
+	// 	// today's forecast
+	// 	return ('Tomorrow, ' + monthNames[monthIndex] + ' ' + day);
+	// }
+// };
 
 
 // function checks to see if <zipData[i].rain> property exists
 // IF EXISTS, RETURNS the value
 // IF UNDEFINED, RETURNS the string "0%" to display for precipitation forecast
-const getPrecip = (rainForecast) => {
+// const getPrecip = (rainForecast) => {
 
-	if (typeof rainForecast !== "undefined") {
-		return rainForecast + "&#37";
-	} else {
-		return "0%";
-	}
-};
+	// if (typeof rainForecast !== "undefined") {
+	// 	return rainForecast + "&#37";
+	// } else {
+	// 	return "0%";
+	// }
+// };
 
 
 // function converts first char in each word of a string to uppercase
@@ -276,7 +275,7 @@ const loadCurrentWeather = (thisZipCode) => {
 	return new Promise ((resolve, reject) => {
 		$.ajax(`http://api.openweathermap.org/data/2.5/weather?zip=${thisZipCode},us&units=imperial&appid=${apiKey}`)
 		.done((data) => {resolve(data);
-console.log("loadCurrentWeather // data :: ", data);
+// console.log("loadCurrentWeather // data :: ", data);
 			FbAPI.writeCurrent(data);
 		})
 		.fail((error) => reject(error));
@@ -288,7 +287,7 @@ const loadForecast = (numDaysForecast, thisZipCode) => {
 	return new Promise ((resolve, reject) => {
 		$.ajax(`http://api.openweathermap.org/data/2.5/forecast/daily?zip=${thisZipCode},us&units=imperial&cnt=${numDaysForecast}&appid=${apiKey}`)
 		.done((data) => {resolve(data.list);
-			writeForecast(numDaysForecast, data.list);
+			FbAPI.writeForecast(numDaysForecast, data.list);
 		})
 		.fail((error) => reject(error));
 	});
@@ -399,6 +398,7 @@ let hideNavbar = () => {
 $('#logout-button-container').on('click', '#logoutButton', () => {
 
 	clearLogin();
+	$('#zipCode').val("");
 	FbAPI.logoutUser();	
 	$('#currentOutput').addClass('hide');
 	$('#forecastOutput').addClass('hide');
