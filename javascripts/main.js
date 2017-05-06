@@ -23,11 +23,11 @@ FbAPI.firebaseCredentials().then((keys) => {
 
 const writeCurrent = (zipData) => {
 
-	$("#today").removeClass("hide");
-	$("#threeDay").removeClass("hide");
-	$("#sevenDay").removeClass("hide");
-	$("#clearAll").removeClass("hide");
-	$("#viewSaved").removeClass("hide");
+	// $("#today").removeClass("hide");
+	// $("#threeDay").removeClass("hide");
+	// $("#sevenDay").removeClass("hide");
+	// $("#clearAll").removeClass("hide");
+	// $("#viewSaved").removeClass("hide");
 
 	let windSpeedArray = zipData.wind;
 	let weatherDescriptionArray = zipData.weather;
@@ -319,10 +319,11 @@ $('#registerButton').click(() => {
 
 		FbAPI.addUser(apiKeys, newUser).then((response) => {
 			clearLogin();
-			$('login-container').addClass('hide');
+			$('#login-container').addClass('hide');
 			// $('main-container').removeClass('hide');
 
 			showNavbar();
+			FbAPI.createLogoutButton(apiKeys);
 
 		}).catch((error) => {
 			console.log("error in addUser", error);
@@ -343,10 +344,11 @@ $('#loginButton').click(() => {
 
 	FbAPI.loginUser(user).then((response) => {
 		clearLogin();
-		$('login-container').addClass('hide');
+		$('#login-container').addClass('hide');
 		// $('main-container').removeClass('hide');
-		FbAPI.createLogoutButton(apiKeys);
+		
 		showNavbar();
+		FbAPI.createLogoutButton(apiKeys);
 
 	}).catch((error) => {
 		console.log("error in loginUser", error);
@@ -372,8 +374,38 @@ let showNavbar = () => {
 	$("#threeDay").removeClass("hide");
 	$("#sevenDay").removeClass("hide");
 	$("#clearAll").removeClass("hide");
+
 	$("#viewSaved").removeClass("hide");
 };
+
+
+// function hids the navbar items
+// when the user logs out
+let hideNavbar = () => {
+
+	$("#zipCode").addClass("hide");
+	$("#sendZip").addClass("hide");
+
+	$("#today").addClass("hide");
+	$("#threeDay").addClass("hide");
+	$("#sevenDay").addClass("hide");
+	$("#clearAll").addClass("hide");
+
+	$("#viewSaved").addClass("hide");
+	$("#logout-button-container").addClass("hide");
+};
+
+
+// function logs the user out of the Weather App
+$('#logout-button-container').on('click', '#logoutButton', () => {
+
+	clearLogin();
+	FbAPI.logoutUser();	
+	$('#currentOutput').addClass('hide');
+	$('#forecastOutput').addClass('hide');
+	$('#login-container').removeClass('hide');
+	hideNavbar();
+});
 
 
 

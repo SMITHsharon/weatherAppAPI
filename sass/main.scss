@@ -7,6 +7,7 @@ body {
 	background-image: url("/images/background.jpeg");
 	font: 100% $font-stack;
 	color: $darkbluegrey;
+	max-width: 100%;
 }
 
 
@@ -26,6 +27,11 @@ body {
 
 	#viewSaved {
 		color: $viewSavedColor;
+	}
+
+	#logoutButton {
+		margin-top: 12px;
+		margin-right: 10px;
 	}
 }
 

@@ -2,7 +2,8 @@ body {
   background-size: cover;
   background-image: url("/images/background.jpeg");
   font: 100% "Catamaran", sans-serif;
-  color: #566D75; }
+  color: #566D75;
+  max-width: 100%; }
 
 .navbar li {
   font-size: 1.5em; }
@@ -15,6 +16,10 @@ body {
 
 .navbar #viewSaved {
   color: #02ED49; }
+
+.navbar #logoutButton {
+  margin-top: 12px;
+  margin-right: 10px; }
 
 h1 {
   margin-bottom: 25px;

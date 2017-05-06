@@ -25,7 +25,7 @@ var FbAPI = ((oldFbAPI) => {
 				method: 'GET',
 				url: `${keys.databaseURL}/users.json?orderBy="uid"&equalTo="${uid}"`
 			}).done((user) => {
-console.log("user iife get // uid", user);
+
 				let response = user;
 				Object.keys(response).forEach((key) => {
 					response[key].id = key;
