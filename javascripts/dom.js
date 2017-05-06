@@ -14,6 +14,17 @@ var FbAPI = ((oldFbAPI) => {
 	};
 
 
+// 	oldFbAPI.createSaveButton = (apiKey) => {
+
+// 		let userid = FbAPI.credentialsCurrentUser().uid;
+// console.log("creating Save Button // userid :: ", userid);
+// 		FbAPI.getUser(apiKey, userid).then((user) => {
+// 			let saveButton = `<button class="btn btn-success btn-xs" id="saveButton">Save</button>`;
+// 			return saveButton;
+// 		});
+// 	};
+
+
 	oldFbAPI.writeCurrent = (zipData) => {
 
 		let windSpeedArray = zipData.wind;
@@ -38,7 +49,7 @@ var FbAPI = ((oldFbAPI) => {
 	};
 
 
-	oldFbAPI.writeForecast = (numDaysForecast, zipData) => {
+	oldFbAPI.writeForecast = (numDaysForecast, zipData, apiKey) => {
 		let weatherDescriptionArray = zipData.weather;
 
 		// clear prior ouputs;
@@ -52,6 +63,7 @@ var FbAPI = ((oldFbAPI) => {
 		domString += `<thead>`;
 		domString += `<tr>`;
 		domString += `<th>Day</th>`;
+		domString += `<th></th>`;
 	    domString += `<th>Description</th>`;
 	    domString += `<th>High/Low</th>`;
 	    domString += `<th>Precip</th>`;
@@ -67,12 +79,14 @@ var FbAPI = ((oldFbAPI) => {
 	    	let tempForecast = zipData[i].temp;
 
 		    domString += `<tr>`;
-		    domString += `<td>${oldFbAPI.showDay(new Date(), i)}</td>`;
-			domString += `<td>${oldFbAPI.titleCase(zipData[i].weather[0].description)}</td>`;
-			domString += `<td>${tempForecast.max}&#176;/${tempForecast.min}&#176;</td>`;
-			domString += `<td>${oldFbAPI.getPrecip(zipData[i].rain)}</td>`;
-		    domString += `<td>${zipData[i].speed} mi/hr</td>`;
-		    domString += `<td>${zipData[i].humidity}&#37;</td>`; 
+		    domString += `<td class="day">${oldFbAPI.showDay(new Date(), i)}</td>`;
+		    // domString += `<td>${oldFbAPI.createSaveButton(apiKey)}</td>`;
+		    domString += `<td><button class="btn btn-success btn-xs save">Save</button></td>`;
+			domString += `<td class="desc">${oldFbAPI.titleCase(zipData[i].weather[0].description)}</td>`;
+			domString += `<td class="highLow">${tempForecast.max}&#176;/${tempForecast.min}&#176;</td>`;
+			domString += `<td class="precip">${oldFbAPI.getPrecip(zipData[i].rain)}</td>`;
+		    domString += `<td class="wind">${zipData[i].speed} mi/hr</td>`;
+		    domString += `<td class="humidity">${zipData[i].humidity}&#37;</td>`; 
 		    domString += `</tr>`;
 		}
 
