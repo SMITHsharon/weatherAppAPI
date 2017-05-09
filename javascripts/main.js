@@ -43,7 +43,9 @@ $("#zipCode").on("keyup", (e) => {
 $("#sendZip").click(() => {
 	let thisZipCode = $("#zipCode").val();
 	if (validZipCode(thisZipCode)) {
+console.log("calling loadCurrentWeather :: ", thisZipCode);
 		loadCurrentWeather(thisZipCode).then((data) => {
+console.log("data :: ", data);
 		}).catch((error) => {
 			console.log(error);
 		});
@@ -111,13 +113,17 @@ $("#forecastOutput").on('click', '.save', (event) => {
 	let forecastPrecip = $(event.target).closest("td").siblings('.precip').html();
 	let forecastWind = $(event.target).closest("td").siblings('.wind').html();
 	let forecastHumidity = $(event.target).closest("td").siblings('.humidity').html();
-console.log("forecastDate :: ", forecastDate);
-console.log("forecastDesc :: ", forecastDesc);
-console.log("forecastTemps :: ", forecastTemps);
-console.log("forecastPrecip :: ", forecastPrecip);
-console.log("forecastWind :: ", forecastWind);
-console.log("forecastHumidity :: ", forecastHumidity);
+// console.log("forecastDate :: ", forecastDate);
+// console.log("forecastDesc :: ", forecastDesc);
+// console.log("forecastTemps :: ", forecastTemps);
+// console.log("forecastPrecip :: ", forecastPrecip);
+// console.log("forecastWind :: ", forecastWind);
+// console.log("forecastHumidity :: ", forecastHumidity);
 
+const user = FbAPI.credentialsCurrentUser();
+// console.log("user :: ", user);
+const userID = user.uid;
+// console.log("user.uid :: ", userID);
 	let thisForecast = {
 			Day: forecastDate,
 			Description: forecastDesc,
@@ -126,11 +132,13 @@ console.log("forecastHumidity :: ", forecastHumidity);
 			Precip: forecastPrecip,
 			Wind: forecastWind
 	};
+console.log("thisForecast :: ", thisForecast);
 
-	// loadForecast(4, thisZipCode).then((data) => {
-	// }).catch((error) => {
-	// 	console.log(error);
-	// });
+	FbAPI.addSavedForecast(apiKeys, thisForecast).then((response) => {
+		console.log("added Forecast to this user", userID);
+	}).catch((error) => {
+		console.log("error in adding saved forecast", error);
+	});
 });
 
 
@@ -166,7 +174,7 @@ const loadCurrentWeather = (thisZipCode) => {
 	return new Promise ((resolve, reject) => {
 		$.ajax(`http://api.openweathermap.org/data/2.5/weather?zip=${thisZipCode},us&units=imperial&appid=${apiKey}`)
 		.done((data) => {resolve(data);
-// console.log("loadCurrentWeather // data :: ", data);
+console.log("loadCurrentWeather // data :: ", data);
 			FbAPI.writeCurrent(data);
 		})
 		.fail((error) => reject(error));
