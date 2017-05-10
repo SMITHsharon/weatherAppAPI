@@ -1,6 +1,34 @@
 
 var FbAPI = ((oldFbAPI) => {
 
+	oldFbAPI.getSavedForecasts = (apiKeys) => {
+
+		let forecasts = [];
+
+		return new Promise ((resolve, reject) => {
+
+		let uid = FbAPI.credentialsCurrentUser().uid;
+
+// console.log("getting saved forecasts / uid :: ", uid);
+// ERROR WITH THIS CALL ::
+			$.ajax(`${apiKeys.databaseURL}/forecasts.json?orderBy="uid"&equalTo="${uid}"`)
+			.done((data) => {
+				console.log("data :: ", data);
+				let response = data;
+				Object.keys(response).forEach((key) => { 
+					response[key].id = key;
+					forecasts.push(response[key]);
+				
+			});
+			resolve(forecasts);
+			
+			}).fail((error) => {
+				reject(error);
+			});
+		});
+	};
+
+
 	oldFbAPI.addSavedForecast = (apiKeys, newForecast) => {
 
 		newForecast.uid = FbAPI.credentialsCurrentUser().uid;
@@ -8,13 +36,13 @@ var FbAPI = ((oldFbAPI) => {
 		return new Promise ((resolve, reject) => {
 			$.ajax({
 				method: 'POST',
-				url: `${apiKeys.databaseURL}/items/.json`,
+				url: `${apiKeys.databaseURL}/forecasts/.json`,
 				data: JSON.stringify(newForecast)
 
 			}).done(() => {
 				resolve();
 
-			}).fail(() => {
+			}).fail((error) => {
 				reject(error);
 			});
 		});

@@ -3,7 +3,7 @@ $(document).ready(function(){
 
 // DON'T PUSH API KEY UP TO GITHUB !!!!!
 // weather app API Key
-const apiKey = "";
+const apiKey = "3bc92939635aacb6e7fe3c6ff1ffbb19";
 
 let apiKeys; // firebase credentials
 
@@ -113,17 +113,7 @@ $("#forecastOutput").on('click', '.save', (event) => {
 	let forecastPrecip = $(event.target).closest("td").siblings('.precip').html();
 	let forecastWind = $(event.target).closest("td").siblings('.wind').html();
 	let forecastHumidity = $(event.target).closest("td").siblings('.humidity').html();
-// console.log("forecastDate :: ", forecastDate);
-// console.log("forecastDesc :: ", forecastDesc);
-// console.log("forecastTemps :: ", forecastTemps);
-// console.log("forecastPrecip :: ", forecastPrecip);
-// console.log("forecastWind :: ", forecastWind);
-// console.log("forecastHumidity :: ", forecastHumidity);
 
-const user = FbAPI.credentialsCurrentUser();
-// console.log("user :: ", user);
-const userID = user.uid;
-// console.log("user.uid :: ", userID);
 	let thisForecast = {
 			Day: forecastDate,
 			Description: forecastDesc,
@@ -132,13 +122,23 @@ const userID = user.uid;
 			Precip: forecastPrecip,
 			Wind: forecastWind
 	};
-console.log("thisForecast :: ", thisForecast);
-
 	FbAPI.addSavedForecast(apiKeys, thisForecast).then((response) => {
-		console.log("added Forecast to this user", userID);
+		
 	}).catch((error) => {
 		console.log("error in adding saved forecast", error);
 	});
+});
+
+
+// event handler for <View Saved Forecasts> link
+$("#viewSaved").click(() => {
+
+	FbAPI.getSavedForecasts(apiKeys).then(() => {
+		FbAPI.writeSaved();
+	}).catch((error) => {
+		console.log("error in viewing saved forecasts: ", error);
+	});
+	
 });
 
 

@@ -98,6 +98,11 @@ var FbAPI = ((oldFbAPI) => {
 	};
 
 
+	oldFbAPI.writeSaved = () => {
+		console.log("writing saved forecasts");
+	};
+
+
 	// function converts first char in each word of a string to uppercase
 	// RETURNS the converted string
 	oldFbAPI.titleCase = (str) => {
