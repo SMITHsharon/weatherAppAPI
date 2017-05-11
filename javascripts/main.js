@@ -142,6 +142,16 @@ $("#viewSaved").click(() => {
 });
 
 
+$("#forecastOutput").on('click', '.delete', (event) => {
+
+	FbAPI.deleteSavedForecast(apiKeys, event.target.id).then(() => {
+		FbAPI.writeSaved();
+	}).catch((error) => {
+		console.log("error in deleteSavedForecast", error);
+	});
+});
+
+
 // function validates <zipCode> data entered by user in input field
 const validZipCode = (userZipInput) => {
 

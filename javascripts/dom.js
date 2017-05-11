@@ -14,17 +14,7 @@ var FbAPI = ((oldFbAPI) => {
 	};
 
 
-// 	oldFbAPI.createSaveButton = (apiKey) => {
-
-// 		let userid = FbAPI.credentialsCurrentUser().uid;
-// console.log("creating Save Button // userid :: ", userid);
-// 		FbAPI.getUser(apiKey, userid).then((user) => {
-// 			let saveButton = `<button class="btn btn-success btn-xs" id="saveButton">Save</button>`;
-// 			return saveButton;
-// 		});
-// 	};
-
-
+	// function writes the current weather conditions to the DOM
 	oldFbAPI.writeCurrent = (zipData) => {
 
 		let windSpeedArray = zipData.wind;
@@ -49,15 +39,77 @@ var FbAPI = ((oldFbAPI) => {
 	};
 
 
+	// function writes the selected weather forecast to the DOM:
+	// today's forecast <1>; three-day forecast <3>; seven-day forecast <7>
 	oldFbAPI.writeForecast = (numDaysForecast, zipData, apiKey) => {
-		let weatherDescriptionArray = zipData.weather;
 
-		// clear prior ouputs;
-		$("#forecastOutput").empty();
+		let weatherDescriptionArray = zipData.weather;
 
 		let domString = "";
 
-		// write table header for Forecast
+	    domString += oldFbAPI.writeTableHeader(domString);
+
+        // write the data output to the table
+	    domString += `<tbody>`;
+	    for (let i=0; i<numDaysForecast; i++) {
+
+	    	let tempForecast = zipData[i].temp;
+
+		    domString += `<tr>`;
+		    domString += `<td class="day">${oldFbAPI.showDay(new Date(), i)}</td>`;
+		    domString += `<td><button class="btn btn-success btn-xs save">Save</button></td>`;
+			domString += `<td class="desc">${oldFbAPI.titleCase(zipData[i].weather[0].description)}</td>`;
+			domString += `<td class="highLow">${tempForecast.max}&#176;/${tempForecast.min}&#176;</td>`;
+			domString += `<td class="precip">${oldFbAPI.getPrecip(zipData[i].rain)}</td>`;
+		    domString += `<td class="wind">${zipData[i].speed} mi/hr</td>`;
+		    domString += `<td class="humidity">${zipData[i].humidity}&#37;</td>`; 
+		    domString += `</tr>`;
+		}
+
+		domString += `</tbody>`;
+		domString += `</table>`;
+		domString += `</div>`;
+
+		$("#forecastOutput").html(domString);
+
+	};
+
+
+	// function writes the current user's saved weather forecasts to the DOM
+	oldFbAPI.writeSaved = () => {
+
+		let domString = "";
+
+	 	domString += oldFbAPI.writeTableHeader(domString);
+
+        // write content of <savedForecasts> array to the table
+	    domString += `<tbody>`;
+	    for (let i=0; i<numDaysForecast; i++) {
+
+	    	let tempForecast = zipData[i].temp;
+
+		    domString += `<tr>`;
+		    domString += `<td class="day">${savedForecasts.Day}</td>`;
+		    domString += `<td><button class="btn btn-danger btn-xs delete">Delete</button></td>`;
+			domString += `<td class="desc">${savedForecasts.Description}</td>`;
+			domString += `<td class="highLow">${savedForecasts.HighLow}</td>`;
+			domString += `<td class="precip">${savedForecasts.Precip}</td>`;
+		    domString += `<td class="wind">${savedForecasts.Wind}</td>`;
+		    domString += `<td class="humidity">${savedForecasts.Humidity};</td>`; 
+		    domString += `</tr>`;
+		}
+
+		domString += `</tbody>`;
+		domString += `</table>`;
+		domString += `</div>`;
+
+		$("#forecastOutput").html(domString);
+	};
+
+
+	// writes output for weather forecasts displayed in table format
+	oldFbAPI.writeTableHeader = (domString) => {
+
 		domString += `<div class="table-responsive">`;
 		domString += `<table class="table">`;
 		domString += `<thead>`;
@@ -72,34 +124,7 @@ var FbAPI = ((oldFbAPI) => {
 	    domString += `</tr>`;    
 	    domString += `</thead>`;   
 
-        // write the data output to the table
-	    domString += `<tbody>`;
-	    for (let i=0; i<numDaysForecast; i++) {
-
-	    	let tempForecast = zipData[i].temp;
-
-		    domString += `<tr>`;
-		    domString += `<td class="day">${oldFbAPI.showDay(new Date(), i)}</td>`;
-		    // domString += `<td>${oldFbAPI.createSaveButton(apiKey)}</td>`;
-		    domString += `<td><button class="btn btn-success btn-xs save">Save</button></td>`;
-			domString += `<td class="desc">${oldFbAPI.titleCase(zipData[i].weather[0].description)}</td>`;
-			domString += `<td class="highLow">${tempForecast.max}&#176;/${tempForecast.min}&#176;</td>`;
-			domString += `<td class="precip">${oldFbAPI.getPrecip(zipData[i].rain)}</td>`;
-		    domString += `<td class="wind">${zipData[i].speed} mi/hr</td>`;
-		    domString += `<td class="humidity">${zipData[i].humidity}&#37;</td>`; 
-		    domString += `</tr>`;
-		}
-
-		domString += `</tbody>`;
-		domString += `</table>`;
-		domString += `</div>`;
-
-		$("#forecastOutput").append(domString);
-	};
-
-
-	oldFbAPI.writeSaved = () => {
-		console.log("writing saved forecasts");
+	    return domString;
 	};
 
 

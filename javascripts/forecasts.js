@@ -3,7 +3,8 @@ var FbAPI = ((oldFbAPI) => {
 
 	oldFbAPI.getSavedForecasts = (apiKeys) => {
 
-		let forecasts = [];
+		// let forecasts = [];
+		// savedForecasts = []; defined in main iife
 
 		return new Promise ((resolve, reject) => {
 
@@ -17,7 +18,7 @@ var FbAPI = ((oldFbAPI) => {
 				let response = data;
 				Object.keys(response).forEach((key) => { 
 					response[key].id = key;
-					forecasts.push(response[key]);
+					savedForecasts.push(response[key]);
 				
 			});
 			resolve(forecasts);
@@ -42,6 +43,23 @@ var FbAPI = ((oldFbAPI) => {
 			}).done(() => {
 				resolve();
 
+			}).fail((error) => {
+				reject(error);
+			});
+		});
+	};
+
+
+	oldFbAPI.deleteSavedForecast = (apiKeys, id) => {
+
+		return new Promise ((resolve, reject) => {
+
+			$.ajax({
+				method: 'DELETE',
+				url: '${apiKeys.databaseURL}/forecasts/${id}.json'
+
+			}).done(() => {
+				resolve();
 			}).fail((error) => {
 				reject(error);
 			});
