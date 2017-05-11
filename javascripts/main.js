@@ -3,7 +3,7 @@ $(document).ready(function(){
 
 // DON'T PUSH API KEY UP TO GITHUB !!!!!
 // weather app API Key
-const apiKey = "3bc92939635aacb6e7fe3c6ff1ffbb19";
+const apiKey = "";
 
 let apiKeys; // firebase credentials
 
@@ -43,9 +43,7 @@ $("#zipCode").on("keyup", (e) => {
 $("#sendZip").click(() => {
 	let thisZipCode = $("#zipCode").val();
 	if (validZipCode(thisZipCode)) {
-console.log("calling loadCurrentWeather :: ", thisZipCode);
 		loadCurrentWeather(thisZipCode).then((data) => {
-console.log("data :: ", data);
 		}).catch((error) => {
 			console.log(error);
 		});
@@ -184,7 +182,6 @@ const loadCurrentWeather = (thisZipCode) => {
 	return new Promise ((resolve, reject) => {
 		$.ajax(`http://api.openweathermap.org/data/2.5/weather?zip=${thisZipCode},us&units=imperial&appid=${apiKey}`)
 		.done((data) => {resolve(data);
-console.log("loadCurrentWeather // data :: ", data);
 			FbAPI.writeCurrent(data);
 		})
 		.fail((error) => reject(error));
