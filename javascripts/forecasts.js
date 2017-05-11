@@ -21,7 +21,7 @@ var FbAPI = ((oldFbAPI) => {
 					savedForecasts.push(response[key]);
 				
 			});
-			resolve(forecasts);
+			resolve(savedForecasts);
 			
 			}).fail((error) => {
 				reject(error);
