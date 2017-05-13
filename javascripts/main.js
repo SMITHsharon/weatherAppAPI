@@ -139,7 +139,7 @@ $("#forecastOutput").on('click', '.delete', (event) => {
 console.log("event.target.id :: ", event.target.id);
 
 	FbAPI.deleteSavedForecast(apiKeys, event.target.id).then(() => {
-		FbAPI.writeSaved();
+		FbAPI.writeSaved(apiKeys);
 	}).catch((error) => {
 		console.log("error in deleteSavedForecast", error);
 	});

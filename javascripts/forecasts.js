@@ -54,7 +54,7 @@ console.log("deleting // id :: ", id);
 
 			$.ajax({
 				method: 'DELETE',
-				url: '${apiKeys.databaseURL}/forecasts/${id}.json'
+				url: `${apiKeys.databaseURL}/forecasts/${id}.json`
 
 			}).done(() => {
 				resolve();
