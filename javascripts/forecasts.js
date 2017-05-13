@@ -3,25 +3,22 @@ var FbAPI = ((oldFbAPI) => {
 
 	oldFbAPI.getSavedForecasts = (apiKeys) => {
 
-		// let forecasts = [];
-		// savedForecasts = []; defined in main iife
+		let forecasts = [];
 
 		return new Promise ((resolve, reject) => {
 
 		let uid = FbAPI.credentialsCurrentUser().uid;
 
-// console.log("getting saved forecasts / uid :: ", uid);
-// ERROR WITH THIS CALL ::
 			$.ajax(`${apiKeys.databaseURL}/forecasts.json?orderBy="uid"&equalTo="${uid}"`)
 			.done((data) => {
 				console.log("data :: ", data);
 				let response = data;
 				Object.keys(response).forEach((key) => { 
 					response[key].id = key;
-					savedForecasts.push(response[key]);
+					forecasts.push(response[key]);
 				
 			});
-			resolve(savedForecasts);
+			resolve(forecasts);
 			
 			}).fail((error) => {
 				reject(error);

@@ -3,7 +3,7 @@ $(document).ready(function(){
 
 // DON'T PUSH API KEY UP TO GITHUB !!!!!
 // weather app API Key
-const apiKey = "";
+const apiKey = "880e4883cf47422f45c48ab2629e7a70";
 
 let apiKeys; // firebase credentials
 
@@ -130,13 +130,7 @@ $("#forecastOutput").on('click', '.save', (event) => {
 
 // event handler for <View Saved Forecasts> link
 $("#viewSaved").click(() => {
-
-	FbAPI.getSavedForecasts(apiKeys).then(() => {
-		FbAPI.writeSaved();
-	}).catch((error) => {
-		console.log("error in viewing saved forecasts: ", error);
-	});
-	
+	FbAPI.writeSaved(apiKeys);
 });
 
 

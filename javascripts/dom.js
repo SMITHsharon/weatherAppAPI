@@ -76,34 +76,39 @@ var FbAPI = ((oldFbAPI) => {
 
 
 	// function writes the current user's saved weather forecasts to the DOM
-	oldFbAPI.writeSaved = () => {
+	oldFbAPI.writeSaved = (apiKeys) => {
 
-		let domString = "";
+		FbAPI.getSavedForecasts(apiKeys).then((results) => {
 
-	 	domString += oldFbAPI.writeTableHeader(domString);
+			let forecasts = results;
+			let domString = "";
 
-        // write content of <savedForecasts> array to the table
-	    domString += `<tbody>`;
-	    for (let i=0; i<numDaysForecast; i++) {
+		 	domString += oldFbAPI.writeTableHeader(domString);
 
-	    	let tempForecast = zipData[i].temp;
+	        // write content of <savedForecasts> array to the table
+		    domString += `<tbody>`;
+		    for (let i=0; i<forecasts.length; i++) {
 
-		    domString += `<tr>`;
-		    domString += `<td class="day">${savedForecasts.Day}</td>`;
-		    domString += `<td><button class="btn btn-danger btn-xs delete">Delete</button></td>`;
-			domString += `<td class="desc">${savedForecasts.Description}</td>`;
-			domString += `<td class="highLow">${savedForecasts.HighLow}</td>`;
-			domString += `<td class="precip">${savedForecasts.Precip}</td>`;
-		    domString += `<td class="wind">${savedForecasts.Wind}</td>`;
-		    domString += `<td class="humidity">${savedForecasts.Humidity};</td>`; 
-		    domString += `</tr>`;
-		}
+			    domString += `<tr>`;
+			    domString += `<td class="day">${forecasts[i].Day}</td>`;
+			    domString += `<td><button class="btn btn-danger btn-xs delete">Delete</button></td>`;
+				domString += `<td class="desc">${forecasts[i].Description}</td>`;
+				domString += `<td class="highLow">${forecasts[i].HighLow}</td>`;
+				domString += `<td class="precip">${forecasts[i].Precip}</td>`;
+			    domString += `<td class="wind">${forecasts[i].Wind}</td>`;
+			    domString += `<td class="humidity">${forecasts[i].Humidity};</td>`; 
+			    domString += `</tr>`;
+			}
 
-		domString += `</tbody>`;
-		domString += `</table>`;
-		domString += `</div>`;
+			domString += `</tbody>`;
+			domString += `</table>`;
+			domString += `</div>`;
 
-		$("#forecastOutput").html(domString);
+			$("#forecastOutput").html(domString);
+
+			}).catch((error) => {
+				console.log("writeDOM error", error);
+			});
 	};
 
 
