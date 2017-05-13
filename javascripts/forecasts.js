@@ -48,6 +48,7 @@ var FbAPI = ((oldFbAPI) => {
 
 
 	oldFbAPI.deleteSavedForecast = (apiKeys, id) => {
+console.log("deleting // id :: ", id);
 
 		return new Promise ((resolve, reject) => {
 

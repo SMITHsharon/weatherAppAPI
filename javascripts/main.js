@@ -136,6 +136,8 @@ $("#viewSaved").click(() => {
 
 $("#forecastOutput").on('click', '.delete', (event) => {
 
+console.log("event.target.id :: ", event.target.id);
+
 	FbAPI.deleteSavedForecast(apiKeys, event.target.id).then(() => {
 		FbAPI.writeSaved();
 	}).catch((error) => {

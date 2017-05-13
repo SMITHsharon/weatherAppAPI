@@ -87,18 +87,19 @@ var FbAPI = ((oldFbAPI) => {
 
 	        // write content of <savedForecasts> array to the table
 		    domString += `<tbody>`;
-		    for (let i=0; i<forecasts.length; i++) {
+		    // for (let i=0; i<forecasts.length; i++) {
+		    forecasts.forEach((forecast) => {
 
 			    domString += `<tr>`;
-			    domString += `<td class="day">${forecasts[i].Day}</td>`;
-			    domString += `<td><button class="btn btn-danger btn-xs delete">Delete</button></td>`;
-				domString += `<td class="desc">${forecasts[i].Description}</td>`;
-				domString += `<td class="highLow">${forecasts[i].HighLow}</td>`;
-				domString += `<td class="precip">${forecasts[i].Precip}</td>`;
-			    domString += `<td class="wind">${forecasts[i].Wind}</td>`;
-			    domString += `<td class="humidity">${forecasts[i].Humidity};</td>`; 
+			    domString += `<td class="day">${forecast.Day}</td>`;
+			    domString += `<td><button class="btn btn-danger btn-xs delete" id="${forecast.id}">Delete</button></td>`;
+				domString += `<td class="desc">${forecast.Description}</td>`;
+				domString += `<td class="highLow">${forecast.HighLow}</td>`;
+				domString += `<td class="precip">${forecast.Precip}</td>`;
+			    domString += `<td class="wind">${forecast.Wind}</td>`;
+			    domString += `<td class="humidity">${forecast.Humidity};</td>`; 
 			    domString += `</tr>`;
-			}
+			});
 
 			domString += `</tbody>`;
 			domString += `</table>`;
