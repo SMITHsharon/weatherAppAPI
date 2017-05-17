@@ -35,7 +35,7 @@ var FbAPI = ((oldFbAPI) => {
 
 		domString += `Air Pressure:  ${weatherConditionsArray.pressure}Pa</br>`;
 
-		$("#currentOutput").append(domString);
+		$("#currentOutput").html(domString);
 	};
 
 
