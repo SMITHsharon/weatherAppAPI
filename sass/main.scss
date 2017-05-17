@@ -1,6 +1,83 @@
 
 @import "color";
+@import "fonts";
+@import "images";
 
 body {
-	background-color: color;
+	background-color: $background;
+	font: 100% $font-stack;
+	color: $darkbluegrey;
 }
+
+
+h1 {
+	margin-bottom: 25px;
+	text-align: center;
+}
+
+
+.zipInput {
+
+	.label { 
+		background-color: $background;
+		color: $darkbluegrey;
+		font-size: 1.5em;
+		bont-weight: 900;
+	}
+
+	input {
+		color: $darkbluegrey;
+		font-size: 2em;
+	}
+
+	input, .btn {
+		margin-left: 10px;
+	}
+
+	.btn {
+		margin-top: 5px;
+		outline: none;
+	}
+}
+
+
+#currentOutput {
+
+	margin-top: 1%;
+
+	.btn {
+		margin-left: 5px;
+	}
+
+	margin-left: 8%;
+	font-size: 1.8em;
+
+	.currentWeatherHead {
+
+		font-size: 1.8em;
+		font-weight: 900;
+	}
+
+	li {
+	 list-style-type: none;
+	}
+}
+
+
+
+#forecastOutput {
+	margin-top: 2%;
+	margin-left: 5%;
+	margin-right: 5%;
+}
+
+
+table {
+	
+	border: 1px solid $border-color;
+
+	thead {
+		background-color: $table-header;
+	}
+}
+

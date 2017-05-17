@@ -1,2 +1,50 @@
 body {
-  background-color: color; }
+  background: url("./images/skyBackground.jpg") no-repeat center center fixed; }
+
+body {
+  background-color: #D3E0ED;
+  font: 100% "Catamaran", sans-serif;
+  color: #566D75; }
+
+h1 {
+  margin-bottom: 25px;
+  text-align: center; }
+
+.zipInput .label {
+  background-color: #D3E0ED;
+  color: #566D75;
+  font-size: 1.5em;
+  bont-weight: 900; }
+
+.zipInput input {
+  color: #566D75;
+  font-size: 2em; }
+
+.zipInput input, .zipInput .btn {
+  margin-left: 10px; }
+
+.zipInput .btn {
+  margin-top: 5px;
+  outline: none; }
+
+#currentOutput {
+  margin-top: 1%;
+  margin-left: 8%;
+  font-size: 1.8em; }
+  #currentOutput .btn {
+    margin-left: 5px; }
+  #currentOutput .currentWeatherHead {
+    font-size: 1.8em;
+    font-weight: 900; }
+  #currentOutput li {
+    list-style-type: none; }
+
+#forecastOutput {
+  margin-top: 2%;
+  margin-left: 5%;
+  margin-right: 5%; }
+
+table {
+  border: 1px solid #99B2CC; }
+  table thead {
+    background-color: #F4F5DA; }
