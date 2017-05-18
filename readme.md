@@ -20,7 +20,7 @@ This exercise sends an API request to [OpenWeatherMap](http://openweathermap.org
 ![Weather App Part 2 API on Launch](https://raw.githubusercontent.com/SMITHsharon/weatherAppAPI/master/screens/Weather%20App2%20on%20Launch.png)
 
 #### Weather App | Current Weather // PART 2
-![Weather App Part 2 Current Weather]()
+![Weather App Part 2 Current Weather](https://raw.githubusercontent.com/SMITHsharon/weatherAppAPI/master/screens/Weather%20App2%20%7C%20Current%20Weather.png)
 
 #### Weather App | Seven-Day Forecast // PART 2
 ![Weather App Part 2 Seven-Day Forecast]()
