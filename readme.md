@@ -2,7 +2,7 @@
 
 ### Project Description 
 #### Part 1
-This exercise sends an API request to [OpenWeatherMap](http://openweathermap.org/API) using as primary parameter the five-digit zip code entered by the user. When the user clicks the `Show Current Weather` button, the current weather for the specified location displays as well as additional buttons for forecast options. Clicking one of these buttons initiates another `ajax` call to the OpenWeatherMap for forecast information, which then displays in a table format. 
+This exercise sends an API request to [OpenWeatherMap](http://openweathermap.org/API) using as primary parameter the five-digit zip code entered by the user. When the user clicks the `Show Current Weather` button, the current weather for the specified location displays as well as additional buttons for forecast options. Clicking one of these buttons initiates another `ajax` call to OpenWeatherMap for forecast information, which then displays in a table format. 
 
 
 #### Part 2
