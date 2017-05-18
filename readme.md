@@ -1,8 +1,12 @@
 # NSS Weather App API
 
 ### Project Description 
-
+## Part 1
 This exercise sends an API request to [OpenWeatherMap](http://openweathermap.org/API) using as primary parameter the five-digit zip code entered by the user. When the user clicks the `Show Current Weather` button, the current weather for the specified location displays as well as additional buttons for forecast options. Clicking one of these buttons initiates another `ajax` call to the OpenWeatherMap for forecast information, which then displays in a table format. 
+
+
+## Part 2
+For Part 2, a user log-in screen displays on launch. Upon displaying forecasts the user has the option to save a selected day's forecast, and can click to view all saved forecasts. When saved forecasts are displayed the user can delete any selected forecast from the list. The saved forecasts are stored in firebase. Adding and deleting records to firebase are made via `ajax` statements to `POST` and `DELETE` respectively. 
 
 #### Weather App API on Launch // PART 1
 ![Weather App API on Launch](https://raw.githubusercontent.com/SMITHsharon/weatherAppAPI/screens/screens/Weather%20App%20on%20Launch.png)
