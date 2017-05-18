@@ -26,7 +26,7 @@ This exercise sends an API request to [OpenWeatherMap](http://openweathermap.org
 ![Weather App Part 2 Seven-Day Forecast](https://raw.githubusercontent.com/SMITHsharon/weatherAppAPI/master/screens/Weather%20App2%20%7C%20Seven-Day%20Forecast.png)
 
 #### Weather App | Saved Forecasts // PART 2
-![Weather App Part 2 Saved Forecasts]()
+![Weather App Part 2 Saved Forecasts](https://raw.githubusercontent.com/SMITHsharon/weatherAppAPI/master/screens/Weather%20App2%20%7C%20Saved%20Forecasts.png)
 
 
 ### Project Specs // PART 1
