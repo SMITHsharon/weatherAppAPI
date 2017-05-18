@@ -11,7 +11,6 @@ var FbAPI = ((oldFbAPI) => {
 
 			$.ajax(`${apiKeys.databaseURL}/forecasts.json?orderBy="uid"&equalTo="${uid}"`)
 			.done((data) => {
-				console.log("data :: ", data);
 				let response = data;
 				Object.keys(response).forEach((key) => { 
 					response[key].id = key;
@@ -48,7 +47,6 @@ var FbAPI = ((oldFbAPI) => {
 
 
 	oldFbAPI.deleteSavedForecast = (apiKeys, id) => {
-console.log("deleting // id :: ", id);
 
 		return new Promise ((resolve, reject) => {
 
@@ -68,3 +66,4 @@ console.log("deleting // id :: ", id);
 	return oldFbAPI;
 
 })(FbAPI || {});
+

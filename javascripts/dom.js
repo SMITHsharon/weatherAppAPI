@@ -41,7 +41,7 @@ var FbAPI = ((oldFbAPI) => {
 
 	// function writes the selected weather forecast to the DOM:
 	// today's forecast <1>; three-day forecast <3>; seven-day forecast <7>
-	oldFbAPI.writeForecast = (numDaysForecast, zipData, apiKey) => {
+	oldFbAPI.writeForecast = (numDaysForecast, thisZip, zipData, apiKey) => {
 
 		let weatherDescriptionArray = zipData.weather;
 
@@ -56,9 +56,14 @@ var FbAPI = ((oldFbAPI) => {
 	    	let tempForecast = zipData[i].temp;
 
 		    domString += `<tr>`;
+		    domString += `<td class="zip">${thisZip}</td>`;
 		    domString += `<td class="day">${oldFbAPI.showDay(new Date(), i)}</td>`;
 		    domString += `<td><button class="btn btn-success btn-xs save">Save</button></td>`;
-			domString += `<td class="desc">${oldFbAPI.titleCase(zipData[i].weather[0].description)}</td>`;
+		    // display weather icon + description
+			domString += `<td class="desc">
+			<img src="http://openweathermap.org/img/w/${oldFbAPI.titleCase(zipData[i].weather[0].icon)}.png">
+			 ${oldFbAPI.titleCase(zipData[i].weather[0].description)}</td>`;
+			 
 			domString += `<td class="highLow">${tempForecast.max}&#176;/${tempForecast.min}&#176;</td>`;
 			domString += `<td class="precip">${oldFbAPI.getPrecip(zipData[i].rain)}</td>`;
 		    domString += `<td class="wind">${zipData[i].speed} mi/hr</td>`;
@@ -91,6 +96,7 @@ var FbAPI = ((oldFbAPI) => {
 		    forecasts.forEach((forecast) => {
 
 			    domString += `<tr>`;
+			    domString += `<td class="day">${forecast.Zip}</td>`;
 			    domString += `<td class="day">${forecast.Day}</td>`;
 			    domString += `<td><button class="btn btn-danger btn-xs delete" id="${forecast.id}">Delete</button></td>`;
 				domString += `<td class="desc">${forecast.Description}</td>`;
@@ -120,6 +126,7 @@ var FbAPI = ((oldFbAPI) => {
 		domString += `<table class="table">`;
 		domString += `<thead>`;
 		domString += `<tr>`;
+		domString += `<th>Zip</th>`;
 		domString += `<th>Day</th>`;
 		domString += `<th></th>`;
 	    domString += `<th>Description</th>`;
@@ -195,3 +202,4 @@ var FbAPI = ((oldFbAPI) => {
 	return oldFbAPI;
 
 })(FbAPI || {});
+

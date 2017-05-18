@@ -2,6 +2,7 @@
   "forecasts" : {
     "forecast0" : {
       "uid" : "aLGXHOLgrMfMebNk5t1Q3phau403",
+      "Zip" : "37208",
       "Day" : "May 6",
       "Description" : "Light Rain",
       "HighLow" : "64.96/46.71",
@@ -11,6 +12,7 @@
     },
     "forecast1" : {
       "uid" : "aLGXHOLgrMfMebNk5t1Q3phau403",
+      "Zip" : "37208",
       "Day" : "May 7",
       "Description" : "Light Rain",
       "HighLow" : "61.97/42.82",
@@ -20,6 +22,7 @@
     },
     "forecast2" : {
       "uid" : "aLGXHOLgrMfMebNk5t1Q3phau403",
+      "Zip" : "37208",
       "Day" : "May 8",
       "Description" : "Sky Is Clear",
       "HighLow" : "62.38/40.57",
@@ -29,6 +32,7 @@
     },
     "forecast3" : {
       "uid" : "6jPMAEXGdBTVYAS6fLoZvNp195t1",
+      "Zip" : "32540",
       "Day" : "July 1",
       "Description" : "Hot Hot Hot",
       "HighLow" : "99/70",
@@ -38,6 +42,7 @@
     },
     "forecast4" : {
       "uid" : "6jPMAEXGdBTVYAS6fLoZvNp195t1",
+      "Zip" : "32540",
       "Day" : "July 4",
       "Description" : "Hot Hot Sizzling Hot",
       "HighLow" : "102/72",
@@ -47,6 +52,7 @@
     },
     "forecast5" : {
       "uid" : "6jPMAEXGdBTVYAS6fLoZvNp195t1",
+      "Zip" : "32540",
       "Day" : "July 29",
       "Description" : "Hot Hot Sizzling Hot",
       "HighLow" : "100/70",
