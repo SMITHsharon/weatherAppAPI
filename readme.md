@@ -4,20 +4,32 @@
 
 This exercise sends an API request to [OpenWeatherMap](http://openweathermap.org/API) using as primary parameter the five-digit zip code entered by the user. When the user clicks the `Show Current Weather` button, the current weather for the specified location displays as well as additional buttons for forecast options. Clicking one of these buttons initiates another `ajax` call to the OpenWeatherMap for forecast information, which then displays in a table format. 
 
-#### Weather App API on Launch 
+#### Weather App API on Launch // PART 1
 ![Weather App API on Launch](https://raw.githubusercontent.com/SMITHsharon/weatherAppAPI/screens/screens/Weather%20App%20on%20Launch.png)
 
-#### Weather App | Current Weather
+#### Weather App | Current Weather // PART 1
 ![Weather App | Current Weather](https://raw.githubusercontent.com/SMITHsharon/weatherAppAPI/screens/screens/Weather%20App%20%7C%20Current%20Weather.png)
 
-#### Weather App | One-Day Forecast
+#### Weather App | One-Day Forecast // PART 1
 ![Weather App | One-Day Forecast](https://raw.githubusercontent.com/SMITHsharon/weatherAppAPI/screens/screens/Weather%20App%20%7C%20One-Day%20Forecast.png)
 
-#### Weather App | Seven-Day Forecast
+#### Weather App | Seven-Day Forecast // PART 1
 ![Weather App | Seven-Day Forecast](https://raw.githubusercontent.com/SMITHsharon/weatherAppAPI/weather/screens/Weather%20App%20%7C%20Seven-Day%20Forecast.png)
 
+#### Weather App | on Launch // PART 2
+![Weather App Part 2 API on Launch]()
 
-### Project Specs
+#### Weather App | Current Weather // PART 2
+![Weather App Part 2 Current Weather]()
+
+#### Weather App | Seven-Day Forecast // PART 2
+![Weather App Part 2 Seven-Day Forecast]()
+
+#### Weather App | Saved Forecasts // PART 2
+![Weather App Part 2 Saved Forecasts]()
+
+
+### Project Specs // PART 1
 Use the [OpenWeatherMap](http://openweathermap.org/API) API to build an application that meets the following criteria.
 
 **given** a user wants to view weather information
@@ -59,6 +71,32 @@ Use the [OpenWeatherMap](http://openweathermap.org/API) API to build an applicat
 - Completed code does not have any Grunt errors.
 
 
+### Project Specs // PART 2
+**given** a user wants to view weather information
+**when** the user visits your application
+**then** they should be presented with an authentication mechanism that allows login email and password.
+
+**given** a user wants to view weather information
+**when** the user visits your initial view
+**then** there should be social sharing buttons for Facebook and Twitter
+
+**given** a user wants to save weather information
+**when** the user visits your initial view
+**then** there should be an affordance (e.g. a star or link) that allows them to save a day's forecast to their profile
+
+**given** a user wants to view their saved forecasts
+**when** the user performs a gesture on an element that clearly states its purpose is to view saved data
+**then** the user should be shown a list of all of their saved forecasts
+
+**given** a user wants to delete one of their saved forecasts
+**when** the user performs a gesture on an element that clearly states its purpose is to delete saved data
+**then** the data should be deleteted and the user should be shows the list of all their remaining forecasts
+
+#### Additional Implementation Notes
+- Changed the user navigation from input field and buttons on the screen, to a nav bar
+- Added weather icons, grabbed from http://openweathermap.org/img/w/${iconCode}.icon
+
+
 ### Technologies Used
 - `html`
 - `css`; `SASS`
@@ -66,6 +104,7 @@ Use the [OpenWeatherMap](http://openweathermap.org/API) API to build an applicat
 - `ES6`
 - `jQuery`
 - `Bootstrap`
+- firebase
 - `Grunt`
 
 
