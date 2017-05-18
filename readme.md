@@ -98,7 +98,7 @@ Use the [OpenWeatherMap](http://openweathermap.org/API) API to build an applicat
 
 #### Additional Implementation Notes
 - Changed the user navigation from input field and buttons on the screen, to a nav bar
-- Added weather icons, grabbed from http://openweathermap.org/img/w/${iconCode}.icon
+- Added weather icons, grabbed from `http://openweathermap.org/img/w/${iconCode}.icon`
 
 
 ### Technologies Used
