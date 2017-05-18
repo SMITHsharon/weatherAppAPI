@@ -12,45 +12,83 @@
 </head>
 
 <body>
-  <h1>NSS Weather App API</h1>
 
-  <div class="row">
-    <div class="col-sm-2  col-xs-offset-1 zipInput">
-      <span class="label label-info">Enter zip code to see area weather:</span>
-      <input type="text" id="zipCode" size="16" placeholder="5-Digit Zip Code">
-
-      <div>
-        <button type="button" id="sendRequest" class="btn btn-sm btn-primary" value="submit">Show Current Weather</button>
-
-        <button type="button" id="today" class="btn btn-sm hide" value="submit">Show Today's Forecast</button>
-
-        <button type="button" id="threeDay" class="btn btn-sm hide" value="submit">Show 3-Day Forecast</button>
-
-        <button type="button" id="sevenDay" class="btn btn-sm hide" value="submit">Show 7-Day Forecast</button>
-
-        <button type="button" id="clearAll" class="btn btn-xs btn-default hide" value="submit">Clear All</button>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+        </button>
+        <a class="navbar-brand" href="#">NSS Weather App API</a>
       </div>
-    </div>
 
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
+        <div class="navbar-form navbar-left">
+          <div class="form-group">
+            <input type="text" id="zipCode" class="form-control hide" placeholder="5-Digit Zip Code">
+          </div>
+          <button type="submit" id="sendZip" class="btn btn-default btn-xs hide">Submit</button>
+        </div>
 
-    <div id="currentOutput" class="col-sm-3">
-    </div>
+        <ul class="nav navbar-nav">
+          <li><a id="today" class="hide" href="#">Show Today's Forecast</a></li>
+          <li><a id="threeDay" class="hide" href="#">3-Day Forecast</a></li>
+          <li><a id="sevenDay" class="hide" href="#">7-Day Forecast</a></li>
+          <li><a id="clearAll" class="hide" href="#">Clear All</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a id="viewSaved" class="hide" href="#">View Saved Forecasts</a></li>
+          <li id="logout-button-container"></li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
 
-  </div> <!-- .row -->
+<!-- <h1>NSS Weather App API</h1> -->
 
-
-  
-  <div id="forecastOutput">
+  <!--  <a class="btn btn-social-icon btn-twitter">
+    <span class="fa fa-twitter"></span>
+  </a> -->
+  <div id="social-media-icons" class="hide">
+    <img src="./images/facebook.png">
+    <img src="./images/twitter-logo-button.png">
   </div>
 
+  <!-- user log-in section -->
+  <div class="container col-xs-4 col-xs-offset-4" id="login-container">
+    <h3 class="text-center form-spacing">NSS Weather App API</h3>
+    <input type="email" id="inputEmail" class="form-control form-spacing" placeholder="Email Address" required autofocus>
+    <input type="password" id="inputPassword" class="form-control form-spacing" placeholder="Password" required>
 
+    <button class="btn btn-md btn-success col-xs-6" id="loginButton">Login</button>
+    <button class="btn btn-md btn-primary col-xs-6" id="registerButton">Register</button>
+  </div>
+
+  <div class="row">
+    <div id="currentOutput" class="col-sm-3">
+    </div>
+  </div> <!-- .row -->
+
+  <div id="forecastOutput">
+    <!-- forecast is output in a table grid -->
+  </div>
+
+  <!-- Third Party Scripts -->
   <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
 
   <script type="text/javascript" src="./lib/bower_components/jquery/dist/jquery.js"></script>
 
   <script type="text/javascript" src="./lib/bower_components/bootstrap/dist/js/bootstrap.js"></script>
 
+  <!-- Personal Scripts -->
+  <script type="text/javascript" src="./javascripts/firebase.js"></script>
+  <script type="text/javascript" src="./javascripts/auth.js"></script>
+  <script type="text/javascript" src="./javascripts/userdata.js"></script>
+  <script type="text/javascript" src="./javascripts/dom.js"></script>
+  <script type="text/javascript" src="./javascripts/forecasts.js"></script>
   <script type="text/javascript" src="./javascripts/main.js"></script>
 
 </body>

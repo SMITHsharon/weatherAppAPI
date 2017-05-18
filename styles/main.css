@@ -1,14 +1,36 @@
 body {
-  background: url("./images/skyBackground.jpg") no-repeat center center fixed; }
-
-body {
-  background-color: #D3E0ED;
+  background-size: cover;
+  background-image: url("/images/background.jpeg");
   font: 100% "Catamaran", sans-serif;
-  color: #566D75; }
+  max-width: 100%; }
 
-h1 {
-  margin-bottom: 25px;
-  text-align: center; }
+#social-media-icons {
+  margin-left: 20px;
+  margin-top: 5%; }
+  #social-media-icons img {
+    padding-left: 10px; }
+
+.navbar li {
+  font-size: 1.5em; }
+
+.navbar .navbar-brand {
+  color: #4A8CFF; }
+
+.navbar #today, .navbar #threeDay, .navbar #sevenDay, .navbar #clearAll {
+  color: #D3E0ED; }
+
+.navbar #viewSaved {
+  color: #02ED49; }
+
+.navbar #logoutButton {
+  margin-top: 12px;
+  margin-right: 10px; }
+
+#login-container {
+  margin-top: 10%; }
+  #login-container h1 {
+    margin-bottom: 25px;
+    text-align: center; }
 
 .zipInput .label {
   background-color: #D3E0ED;

@@ -1,0 +1,75 @@
+{
+  "forecasts" : {
+    "forecast0" : {
+      "uid" : "aLGXHOLgrMfMebNk5t1Q3phau403",
+      "Zip" : "37208",
+      "Day" : "May 6",
+      "Description" : "Light Rain",
+      "HighLow" : "64.96/46.71",
+      "Precip" : "1.66%",
+      "Wind" : "4.51 mi/hr",
+      "Humidity" : "54%"
+    },
+    "forecast1" : {
+      "uid" : "aLGXHOLgrMfMebNk5t1Q3phau403",
+      "Zip" : "37208",
+      "Day" : "May 7",
+      "Description" : "Light Rain",
+      "HighLow" : "61.97/42.82",
+      "Precip" : "0%",
+      "Wind" : "4.3 mi/hr",
+      "Humidity" : "0%"
+    },
+    "forecast2" : {
+      "uid" : "aLGXHOLgrMfMebNk5t1Q3phau403",
+      "Zip" : "37208",
+      "Day" : "May 8",
+      "Description" : "Sky Is Clear",
+      "HighLow" : "62.38/40.57",
+      "Precip" : "0%",
+      "Wind" : "2.4 mi/hr",
+      "Humidity" : "0%"
+    },
+    "forecast3" : {
+      "uid" : "6jPMAEXGdBTVYAS6fLoZvNp195t1",
+      "Zip" : "32540",
+      "Day" : "July 1",
+      "Description" : "Hot Hot Hot",
+      "HighLow" : "99/70",
+      "Precip" : "0%",
+      "Wind" : "2.4 mi/hr",
+      "Humidity" : "0%"
+    },
+    "forecast4" : {
+      "uid" : "6jPMAEXGdBTVYAS6fLoZvNp195t1",
+      "Zip" : "32540",
+      "Day" : "July 4",
+      "Description" : "Hot Hot Sizzling Hot",
+      "HighLow" : "102/72",
+      "Precip" : "0%",
+      "Wind" : "3.3 mi/hr",
+      "Humidity" : "2%"
+    },
+    "forecast5" : {
+      "uid" : "6jPMAEXGdBTVYAS6fLoZvNp195t1",
+      "Zip" : "32540",
+      "Day" : "July 29",
+      "Description" : "Hot Hot Sizzling Hot",
+      "HighLow" : "100/70",
+      "Precip" : "5%",
+      "Wind" : "3.3 mi/hr",
+      "Humidity" : "5%"
+    }
+  },
+  "users": {
+    "user0": {
+      "uid": "aLGXHOLgrMfMebNk5t1Q3phau403"
+    },
+    "user1": {
+      "uid": "6jPMAEXGdBTVYAS6fLoZvNp195t1"
+    },
+    "user2": {
+      "uid": "iGiex0UL6khzrPWsCW3PINBgZcE2"
+    }
+  }
+}
