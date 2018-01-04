@@ -104,8 +104,7 @@ Use the [OpenWeatherMap](http://openweathermap.org/API) API to build an applicat
 ### Technologies Used
 - `html`
 - `css`; `SASS`
-- `JavaScript`
-- `ES6`
+- `ES6 JavaScript`
 - `jQuery`
 - `Bootstrap`
 - firebase
