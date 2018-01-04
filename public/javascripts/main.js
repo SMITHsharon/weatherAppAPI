@@ -176,7 +176,7 @@ $("#clearAll").click(() => {
 	// Promise (ajax) calls
 	const loadCurrentWeather = (thisZipCode) => {
 		return new Promise ((resolve, reject) => {
-			$.ajax(`http://api.openweathermap.org/data/2.5/weather?zip=${thisZipCode},us&units=imperial&appid=${weatherAPIKey}`)
+			$.ajax(`https://api.openweathermap.org/data/2.5/weather?zip=${thisZipCode},us&units=imperial&appid=${weatherAPIKey}`)
 			.done((data) => {resolve(data);
 				FbAPI.writeCurrent(data);
 			})
@@ -187,7 +187,7 @@ $("#clearAll").click(() => {
 	const loadForecast = (numDaysForecast, thisZipCode) => {
 
 		return new Promise ((resolve, reject) => {
-			$.ajax(`http://api.openweathermap.org/data/2.5/forecast/daily?zip=${thisZipCode}
+			$.ajax(`https://api.openweathermap.org/data/2.5/forecast/daily?zip=${thisZipCode}
 				,us&units=imperial&cnt=${numDaysForecast}&appid=${weatherAPIKey}`)
 			.done((data) => {resolve(data.list);
 				FbAPI.writeForecast(numDaysForecast, thisZipCode, data.list, weatherAPIKey);
