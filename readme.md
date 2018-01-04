@@ -14,9 +14,6 @@ For Part 2, a user log-in screen displays on launch. Upon displaying forecasts t
 #### Weather App | Current Weather // PART 1
 ![Weather App | Current Weather](https://raw.githubusercontent.com/SMITHsharon/weatherAppAPI/screens/screens/Weather%20App%20%7C%20Current%20Weather.png)
 
-#### Weather App | One-Day Forecast // PART 1
-![Weather App | One-Day Forecast](https://raw.githubusercontent.com/SMITHsharon/weatherAppAPI/screens/screens/Weather%20App%20%7C%20One-Day%20Forecast.png)
-
 #### Weather App | Seven-Day Forecast // PART 1
 ![Weather App | Seven-Day Forecast](https://raw.githubusercontent.com/SMITHsharon/weatherAppAPI/weather/screens/Weather%20App%20%7C%20Seven-Day%20Forecast.png)
 
