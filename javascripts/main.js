@@ -1,23 +1,22 @@
 
 $(document).ready(function(){
 
-// DON'T PUSH API KEY UP TO GITHUB !!!!!
-// weather app API Key
+// don't push api key up to github
 const apiKey = "";
 
 let apiKeys; // firebase credentials
+let weatherAPIKey; // Weather API key
 
 FbAPI.firebaseCredentials().then((keys) => {
-	apiKeys = keys;
-	// gets the apiKeys.json object
-	// hat has the firebase API key et al
+
+	apiKeys = keys.FIREBASE_CONFIG;
+	weatherAPIKey = keys.WEATHER_CONFIG.apiKey;
+
 	firebase.initializeApp(apiKeys);
 
-	// FbAPI.writeCurrent(apiKeys);
 	}).catch((error) => {
 		console.log("key errors", error);
 });
-
 
 
 //********************************************
@@ -99,6 +98,8 @@ $("#clearAll").click(() => {
 	$("#sevenDay").addClass("hide");
 	$("#clearAll").addClass("hide");
 	// $("#viewSaved").addClass("hide");
+
+	showNavbar();
 });
 
 
@@ -174,9 +175,8 @@ $("#clearAll").click(() => {
 
 	// Promise (ajax) calls
 	const loadCurrentWeather = (thisZipCode) => {
-
 		return new Promise ((resolve, reject) => {
-			$.ajax(`http://api.openweathermap.org/data/2.5/weather?zip=${thisZipCode},us&units=imperial&appid=${apiKey}`)
+			$.ajax(`http://api.openweathermap.org/data/2.5/weather?zip=${thisZipCode},us&units=imperial&appid=${weatherAPIKey}`)
 			.done((data) => {resolve(data);
 				FbAPI.writeCurrent(data);
 			})
@@ -188,9 +188,9 @@ $("#clearAll").click(() => {
 
 		return new Promise ((resolve, reject) => {
 			$.ajax(`http://api.openweathermap.org/data/2.5/forecast/daily?zip=${thisZipCode}
-				,us&units=imperial&cnt=${numDaysForecast}&appid=${apiKey}`)
+				,us&units=imperial&cnt=${numDaysForecast}&appid=${weatherAPIKey}`)
 			.done((data) => {resolve(data.list);
-				FbAPI.writeForecast(numDaysForecast, thisZipCode, data.list, apiKey);
+				FbAPI.writeForecast(numDaysForecast, thisZipCode, data.list, weatherAPIKey);
 			})
 			.fail((error) => reject(error));
 		});
@@ -271,7 +271,7 @@ $("#clearAll").click(() => {
 		$("#sevenDay").removeClass("hide");
 		$("#clearAll").removeClass("hide");
 
-		$("#social-media-icons").removeClass("hide");
+		//$("#social-media-icons").removeClass("hide");
 
 		$("#viewSaved").removeClass("hide");
 		$("#logout-button-container").removeClass("hide");
@@ -290,7 +290,7 @@ $("#clearAll").click(() => {
 		$("#sevenDay").addClass("hide");
 		$("#clearAll").addClass("hide");
 
-		$("#social-media-icons").addClass("hide");
+		//$("#social-media-icons").addClass("hide");
 
 		$("#viewSaved").addClass("hide");
 		$("#logout-button-container").addClass("hide");
