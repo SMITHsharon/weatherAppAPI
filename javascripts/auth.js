@@ -1,6 +1,9 @@
 
 var FbAPI = ((oldFbAPI) => {
 
+//user a@a.com
+//pword 123456
+
 	oldFbAPI.registerUser = (credentials) => {
 
 		return new Promise ((resolve, reject) => {
