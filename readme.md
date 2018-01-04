@@ -26,9 +26,6 @@ For Part 2, a user log-in screen displays on launch. Upon displaying forecasts t
 #### Weather App | Seven-Day Forecast // PART 2
 ![Weather App Part 2 Seven-Day Forecast](https://raw.githubusercontent.com/SMITHsharon/weatherAppAPI/master/screens/Weather%20App2%20%7C%20Seven-Day%20Forecast.png)
 
-#### Weather App | Saved Forecasts // PART 2
-![Weather App Part 2 Saved Forecasts](https://raw.githubusercontent.com/SMITHsharon/weatherAppAPI/master/screens/Weather%20App2%20%7C%20Saved%20Forecasts.png)
-
 
 ### Project Specs // PART 1
 Use the [OpenWeatherMap](http://openweathermap.org/API) API to build an application that meets the following criteria.
