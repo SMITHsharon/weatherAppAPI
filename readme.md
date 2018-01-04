@@ -8,15 +8,6 @@ This exercise sends an API request to [OpenWeatherMap](http://openweathermap.org
 #### Part 2
 For Part 2, a user log-in screen displays on launch. Upon displaying forecasts the user has the option to save a selected day's forecast, and can click to view all saved forecasts. When saved forecasts are displayed the user can delete any selected forecast from the list. The saved forecasts are stored in firebase. Adding and deleting records to firebase are made via `ajax` statements to `POST` and `DELETE` respectively. 
 
-#### Weather App API on Launch // PART 1
-![Weather App API on Launch](https://raw.githubusercontent.com/SMITHsharon/weatherAppAPI/screens/screens/Weather%20App%20on%20Launch.png)
-
-#### Weather App | Current Weather // PART 1
-![Weather App | Current Weather](https://raw.githubusercontent.com/SMITHsharon/weatherAppAPI/screens/screens/Weather%20App%20%7C%20Current%20Weather.png)
-
-#### Weather App | Seven-Day Forecast // PART 1
-![Weather App | Seven-Day Forecast](https://raw.githubusercontent.com/SMITHsharon/weatherAppAPI/weather/screens/Weather%20App%20%7C%20Seven-Day%20Forecast.png)
-
 #### Weather App | on Launch // PART 2
 ![Weather App Part 2 API on Launch](https://raw.githubusercontent.com/SMITHsharon/weatherAppAPI/master/screens/Weather%20App2%20on%20Launch.png)
 
@@ -105,19 +96,10 @@ Use the [OpenWeatherMap](http://openweathermap.org/API) API to build an applicat
 - `Grunt`
 
 
-### How To View The Screen 
+### Deployed Site 
 ```
-git clone https://github.com/SMITHsharon/weatherAppAPI.git
-cd weatherAppAPI
-cd lib
-bower install
-npm install
-http-server -p 8080
-This will show in your browser at: http://localhost:8080
+https://nss-weather-app-part-2.firebaseapp.com
 ```
-
-Deployed Site :: ```https://nss-weather-app-part-2.firebaseapp.com```
-
 
 ### Contributor
 [Sharon Smith](https://github.com/SMITHsharon)
