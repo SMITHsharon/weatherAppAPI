@@ -116,7 +116,7 @@ http-server -p 8080
 This will show in your browser at: http://localhost:8080
 ```
 
-### Deployed Site :: ```https://nss-weather-app-part-2.firebaseapp.com```
+Deployed Site :: ```https://nss-weather-app-part-2.firebaseapp.com```
 
 
 ### Contributor
